@@ -1,7 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro'
 import Projects from '../components/Projects'
-
+import { Analytics } from '@vercel/analytics/react'
 import { TWITTER, GITHUB, YOUTUBE, DISCORD, LINKEDIN } from '../consts'
 import { SITE_TITLE, SITE_DESCRIPTION, LOCATION, BIO } from '../consts'
 ---
@@ -12,6 +12,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, LOCATION, BIO } from '../consts'
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class='flex h-full bg-black text-white'>
+    <Analytics />
     <svg
       class='pointer-events-none fixed isolate z-50 opacity-70 mix-blend-soft-light'
       width='100%'
