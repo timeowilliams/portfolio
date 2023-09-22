@@ -6,7 +6,7 @@ export const SITE_TITLE = 'Hosna Qasmei'
 export const SITE_DESCRIPTION = 'Welcome to my website!'
 export const LOCATION = 'Los Angeles, CA'
 export const BIO =
-  'I am a Software Developer building software to solve problems.'
+  'I am a Software Developer building software to solve problems. Here is my bio of things I should talk about and say and what not. I will replace this with more stuff soon.'
 
 // Projects
 export const PROJECTS = [
@@ -33,6 +33,32 @@ export const PROJECTS = [
     image:
       'https://res.cloudinary.com/duud9d8dv/image/upload/v1694740395/caption-ai_g1aj4t.png',
     status: 'Active'
+  }
+]
+
+// Writing
+export const WRITING = [
+  {
+    title: 'Why I Pivoted from Hardware to Software',
+    date: 'Jun 14, 2023'
+  },
+  {
+    title: 'How to Build a Product not a Project',
+    date: 'Jun 15, 2023'
+  }
+]
+
+// Speaking
+export const SPEAKING = [
+  {
+    title: 'From NextJS to React Native',
+    date: 'Aug 1, 2023',
+    video: 'https://www.youtube.com/watch?v=Oe8D44nAGVg'
+  },
+  {
+    title: 'MarinaHacks Keynote 2022',
+    date: 'Apr 30, 2022',
+    video: 'https://www.youtube.com/watch?v=Tcj4y2_1BEM'
   }
 ]
 
