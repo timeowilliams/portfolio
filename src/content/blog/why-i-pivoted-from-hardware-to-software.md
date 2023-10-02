@@ -1,15 +1,59 @@
 ---
 title: 'Why I Pivoted from Hardware to Software'
 description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022' 
+pubDate: 'Oct 02 2023' 
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+## My Educational Journey
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+In university, I majored in **Computer Engineering**. It is a combination of both electrical and software engineering. I always knew I wanted to go into the engineering field but wasn't sure which route to go.
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+### Exploring My Options
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+- Should I study to be a **Petroleum Engineer** because they make a lot of money?
+- Should I do **Mechanical Engineering** because I get to physically build stuff?
+- Should I do **Civil Engineering** because it's more stable, and I can pursue government jobs?
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+I ended up going with Computer Engineering because I knew I loved programming, and it was the future, but I didn't want to sit in front of a desk all day.
+
+### Specialization Choices
+
+In my last year, I had to specialize more on hardware because it was the quickest way for me to graduate. If I knew better, I would've realized early on that in order to do the software specialization, I would've taken the appropriate classes. But I didn't, so I went with whatever was handed to me. So I was able to graduate fast.
+
+### The Internship Dilemma
+
+I had a couple of internships, and they were mostly software-focused. I wanted to try a hardware job, but it was impossible to get a role like that without hardware experience, which is the norm in this field. It's a chicken and egg situation. Companies want you to have experience, but you need an opportunity to gain it. So most of the time for entry-level jobs, it's your future manager taking a chance on you. So that is what happened to me.
+
+### My First Job
+
+My first position was a **Software Engineering** role. That's where I learned more about Python and grew my HTML and CSS skills. However, most of the projects we were working on weren't optimized or up to date with the latest tech stacks. So I felt if I stayed there longer, I wouldn't grow my skills, so I quit.
+
+### Discovering My Path
+
+I tried again to look for hardware positions and luckily got an opportunity at a startup as an **Associate Embedded Systems Engineer**. I learned a lot, the main thing being that I wanted to do software and not hardware. I realized how much time I was wasting driving to the office, and I could stay at home if I only did the software side of things. So I left that job and took a year to learn more web development and mobile development skills. And haven't looked back since.
+
+## Hardware vs. Software: Pros and Cons
+
+### Working in Hardware
+
+#### Pros:
+- **Tangible Creations**: Working on hardware allows you to physically build and create products that you can touch and see.
+- **Engineering Challenges**: Hardware engineering often presents unique and challenging problems related to electronics, materials, and physical design.
+- **Stability**: Hardware jobs are often considered stable and are crucial in many industries, such as manufacturing and telecommunications.
+
+#### Cons:
+- **Limited Flexibility**: Hardware projects are often more rigid and may involve lengthy development cycles, making it harder to quickly adapt to changes.
+- **Higher Costs**: Developing hardware can be costly due to the need for physical components, prototypes, and manufacturing processes.
+- **Lack of Remote Work**: Hardware work often requires a physical presence in labs or manufacturing facilities, limiting the possibility of remote work.
+
+### Working in Software
+
+#### Pros:
+- **Versatility**: Software development offers a wide range of opportunities, from web and mobile applications to AI and game development.
+- **Fast Iteration**: Software projects can evolve rapidly, allowing for quick adjustments and updates in response to changing requirements.
+- **Remote Work**: Many software jobs can be done remotely, offering flexibility in terms of location and work arrangements.
+
+#### Cons:
+- **Lack of Tangibility**: Software is intangible, which means your creations are not physical objects you can touch.
+- **High Competition**: The software industry is highly competitive, and staying up to date with evolving technologies is crucial.
+- **Sedentary Work**: Software development often involves long hours in front of a computer, which can be physically demanding in a different way.

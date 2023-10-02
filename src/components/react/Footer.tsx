@@ -7,15 +7,17 @@ const Footer = () => {
       <span>2023 © Hosna Qasmei.</span>
       <div className='flex flex-row space-x-4'>
         <a href={TWITTER} target='_blank'>
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="21" 
-            height="21" 
-            viewBox="0 0 24 24" 
-            class="text-zinc-400 dark:text-zinc-400 hover:text-zinc-500 dark:hover:text-zinc-200 duration-200">
-            <path 
-              fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584l-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z">
-            </path>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='18'
+            height='18'
+            viewBox='0 0 24 24'
+            className='text-zinc-400 hover:text-zinc-300 duration-200 mt-0.5'
+          >
+            <path
+              fill='currentColor'
+              d='M18.205 2.25h3.308l-7.227 8.26l8.502 11.24H16.13l-5.214-6.817L4.95 21.75H1.64l7.73-8.835L1.215 2.25H8.04l4.713 6.231l5.45-6.231Zm-1.161 17.52h1.833L7.045 4.126H5.078L17.044 19.77Z'
+            />
           </svg>
         </a>
         <a href={GITHUB} target='_blank'>
