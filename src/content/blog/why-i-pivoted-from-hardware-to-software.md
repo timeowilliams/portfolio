@@ -1,6 +1,6 @@
 ---
 title: 'Why I Pivoted from Hardware to Software'
-description: 'Lorem ipsum dolor sit amet'
+description: 'Exploring my switch from hardware to software engineering and the factors that influenced my decision.'
 pubDate: 'Oct 02 2023' 
 ---
 
