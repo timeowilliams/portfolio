@@ -26,9 +26,9 @@ const Reading = () => {
             {booksForYear.map((book, idx) => (
               <div
                 key={idx}
-                className='grid  grid-cols-1 sm:grid-cols-4 sm:gap-4 text-sm py-1 text-zinc-300'
+                className='grid grid-cols-1 sm:grid-cols-4 sm:gap-4 text-sm py-2 text-zinc-300'
               >
-                <span className='font-semibold'>{book.title}</span>
+                <span>{book.title}</span>
                 <p>{book.author}</p>
                 <p>{book.dateFinished}</p>
                 <p>{'★'.repeat(book.rating)}</p>
