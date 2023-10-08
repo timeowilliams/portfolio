@@ -10,5 +10,9 @@ export default defineConfig({
   site: 'https://hosnaqasmei.com',
   integrations: [sitemap(), tailwind(), react()],
   output: 'server',
-  adapter: vercel()
+  adapter: vercel({
+      webAnalytics: {
+        enabled: true,
+      },
+    }),
 });
