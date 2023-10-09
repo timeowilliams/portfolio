@@ -1,20 +1,22 @@
 ---
 import BaseHead from '../../components/BaseHead.astro'
-import Books from '../../components/react/Books'
+import Reading from '../../components/react/Reading'
 ---
 
 <!doctype html>
 <html lang='en'>
   <head>
-    <BaseHead title='Books | Hosna Qasmei' description="Books I'm currently reading and have read." />
+    <BaseHead
+      title='Reading | Hosna Qasmei'
+      description="Books I'm currently reading and have read."
+    />
   </head>
   <body class='bg-zinc-900'>
-
     <main
       class='mx-auto w-full max-w-screen-md h-screen flex flex-col justify-between px-4 md:px-10'
     >
       <div class='flex flex-col space-y-8'>
-        <Books />
+        <Reading />
       </div>
     </main>
   </body>
