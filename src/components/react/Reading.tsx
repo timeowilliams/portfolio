@@ -1,5 +1,5 @@
 import { CURRENTLY_READING, FINISHED_READING } from '../../consts'
- 
+
 const Reading = () => {
   const groupedBooks = FINISHED_READING.reduce((acc, book) => {
     const year = book.dateFinished.split('-')[0]

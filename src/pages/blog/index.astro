@@ -15,7 +15,6 @@ const posts = (await getCollection('blog')).sort(
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class='bg-zinc-900'>
-     
     <main
       class='mx-auto w-full max-w-screen-md h-screen flex flex-col justify-between px-4 md:px-10'
     >
@@ -40,21 +39,23 @@ const posts = (await getCollection('blog')).sort(
           >
           <span class='group-hover:text-zinc-200'>Back</span>
         </a>
-        <span class='text-zinc-200 border-b pb-8 border-zinc-600'>Writing</span>
-        <div class='grid grid-cols-1 gap-4'>
-          {
-            posts.map((post) => (
-              <a
-                href={`/blog/${post.slug}/`}
-                class='flex flex-row justify-between'
-              >
-                <h4 class='text-zinc-300'>{post.data.title}</h4>
-                <p class='text-zinc-500'>
-                  <FormattedDate date={post.data.pubDate} />
-                </p>
-              </a>
-            ))
-          }
+        <div class='flex flex-col space-y-4'>
+          <span class='text-zinc-200 font-[600] text-4xl'>Writing</span>
+          <div class='grid grid-cols-1 gap-4'>
+            {
+              posts.map((post) => (
+                <a
+                  href={`/blog/${post.slug}/`}
+                  class='flex flex-row justify-between group'
+                >
+                  <h4 class='text-zinc-400 group-hover:text-zinc-200 duration-200'>{post.data.title}</h4>
+                  <p></p>
+                    <FormattedDate date={post.data.pubDate} />
+                  </p>
+                </a>
+              ))
+            }
+          </div>
         </div>
       </div>
     </main>
