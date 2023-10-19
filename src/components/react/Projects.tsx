@@ -4,7 +4,7 @@ import { PROJECTS } from '../../consts'
 
 const Projects = () => {
   return (
-    <div className='grid grid-cols-2 md:grid-cols-3 gap-4 text-sm'>
+    <div className='grid grid-cols-1 gap-6 text-sm'>
       {PROJECTS.map((project, idx) => {
         return (
           <ProjectCard
