@@ -9,11 +9,11 @@ export const LOCATION = 'Los Angeles, CA'
 // Projects
 export const PROJECTS = [
   {
-    title: 'devsetup',
+    title: 'DevSetup',
     description: 'Easily discover and share your setup.',
     link: 'https://www.devsetup.co/',
     image:
-      'https://res.cloudinary.com/duud9d8dv/image/upload/v1697746996/logo_acaxgm.png',
+      'https://res.cloudinary.com/duud9d8dv/image/upload/v1698128625/DevSetup_kcr7lx.png',
     status: 'Active'
   },
   {
