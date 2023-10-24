@@ -47,7 +47,7 @@ const Reading = () => {
         <span className='text-sm text-zinc-400'>
           Here is a list of all the books I'm currently reading. Yes, I'm a
           crazy person and read different books at the same time. Last updated:
-          10/08/2023
+          10/23/2023
         </span>
       </p>
 

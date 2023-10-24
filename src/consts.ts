@@ -78,6 +78,13 @@ export const LINKEDIN = 'https://www.linkedin.com/in/hosnaqasmei/'
 // Reading
 export const FINISHED_READING = [
   {
+    title: 'Black Friend: Essays',
+    author: 'Ziwe',
+    link: 'https://www.amazon.com/Book-Ziwe-Fumudoh-ebook/dp/B08WJT6M3Q',
+    rating: 5,
+    dateFinished: '2023-10-23'
+  },
+  {
     title: 'Exhalation',
     author: 'Ted Chiang',
     dateFinished: '2023-01-05',
@@ -773,11 +780,7 @@ export const FINISHED_READING = [
 ]
 
 export const CURRENTLY_READING = [
-  {
-    title: 'Black Friend: Essays',
-    author: 'Ziwe',
-    link: 'https://www.amazon.com/Book-Ziwe-Fumudoh-ebook/dp/B08WJT6M3Q'
-  },
+
   {
     title: 'The Collected Poems of Audre Lorde',
     author: 'Audre Lorde',
