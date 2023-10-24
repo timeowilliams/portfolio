@@ -13,7 +13,7 @@ export const PROJECTS = [
     description: 'Easily discover and share your setup.',
     link: 'https://www.devsetup.co/',
     image:
-      'https://res.cloudinary.com/duud9d8dv/image/upload/v1698128625/DevSetup_kcr7lx.png',
+      'https://res.cloudinary.com/duud9d8dv/image/upload/v1698129536/devsetup_kzanqs.png',
     status: 'Active'
   },
   {
@@ -21,7 +21,7 @@ export const PROJECTS = [
     description: 'Tool for devs and designers to manage bookmarks.',
     link: 'https://sitemuse.co/',
     image:
-      'https://res.cloudinary.com/duud9d8dv/image/upload/v1694728994/site-muse_kk5ems.png',
+      'https://res.cloudinary.com/duud9d8dv/image/upload/v1698129536/SiteMuse_bgrzpx.png',
     status: 'Building'
   },
   {
@@ -29,16 +29,8 @@ export const PROJECTS = [
     description: 'A platform for womens football.',
     link: 'https://goalazos.com/',
     image:
-      'https://res.cloudinary.com/duud9d8dv/image/upload/v1694729980/goalazos_e2pxv0.png',
+      'https://res.cloudinary.com/duud9d8dv/image/upload/v1698129536/Goalazos_mn3u3z.png',
     status: 'Building'
-  },
-  {
-    title: 'CaptionAI',
-    description: 'Easily add captions to your images using AI.',
-    link: 'https://captionai.vercel.app/',
-    image:
-      'https://res.cloudinary.com/duud9d8dv/image/upload/v1694740395/caption-ai_g1aj4t.png',
-    status: 'Active'
   }
 ]
 
@@ -780,7 +772,6 @@ export const FINISHED_READING = [
 ]
 
 export const CURRENTLY_READING = [
-
   {
     title: 'The Collected Poems of Audre Lorde',
     author: 'Audre Lorde',
