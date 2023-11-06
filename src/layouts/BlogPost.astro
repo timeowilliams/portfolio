@@ -34,7 +34,7 @@ const { title, description, pubDate, updatedDate } = Astro.props
         <div class='prose prose-invert'>
           <div class='flex flex-col'>
             <a
-              href='/blog'
+              href='/'
               class='flex flex-row space-x-1 text-zinc-400 text-sm items-center group no-underline mb-4'
             >
               <svg
@@ -54,6 +54,7 @@ const { title, description, pubDate, updatedDate } = Astro.props
               <span class='group-hover:text-zinc-200'>Back</span>
             </a>
             <span class='font-semibold text-3xl'>{title}</span>
+            {description && <span class='font-thin text-xl'>{description}</span>}
             <div class='pt-4'>
               <FormattedDate date={pubDate} />
               {

@@ -25,45 +25,30 @@ const posts = (await getCollection('blog')).sort(
     >
       <div class='pt-4 md:pt-12 flex flex-col space-y-8 flex-1'>
         <div class='flex flex-col space-y-1'>
-          <img
-            alt='headshot'
-            width='512'
-            height='512'
-            decoding='async'
-            data-nimg='1'
-            class='rounded-lg bg-zinc-100 object-cover dark:bg-zinc-800 h-12 w-12 md:h-16 md:w-16'
-            sizes='4rem'
-            src='https://res.cloudinary.com/duud9d8dv/image/upload/v1696801306/headshot_mlyfwz.jpg'
-          />
-          <p class='text-zinc-100 font-semibold text-lg'>{SITE_TITLE}</p>
-          <p class='text-zinc-300 text-sm leading-6'>
-            <span class='font-thin'
-              >I am a Software Developer building software to solve problems. I
-              have a wide range of hobbies and passions that keep me busy. From
-              <a
-                href='/reading'
-                class='underline font-semibold underline-offset-4 decoration-zinc-500 text-zinc-200 duration-200 hover:decoration-zinc-300'
-                >reading</a
-              >,
-              <!-- <a
-                href='/blog'
-                class='underline font-semibold underline-offset-4 decoration-zinc-500 text-zinc-200 duration-200 hover:decoration-zinc-300'
-                >playing sports</a
-              >,  -->
-              <a
-                href='https://www.youtube.com/playlist?list=PLZebO_PkwBvFNdxA2RTJX_EcSXdLV4_0e'
-                target='_blank'
-                class='underline font-semibold underline-offset-4 decoration-zinc-500 text-zinc-200 duration-200 hover:decoration-zinc-300'
-                >traveling</a
-              >, to making <a
-                href='https://www.youtube.com/@hqasmei'
-                target='_blank'
-                class='underline font-semibold underline-offset-4 decoration-zinc-500 text-zinc-200 duration-200 hover:decoration-zinc-300'
-                >YouTube videos</a
-              >. I am always seeking new experiences and love to keep myself
-              engaged and learning new things.
-            </span>
-          </p>
+          <div class='flex flex-row space-x-4 items-center'>
+            <img
+              alt='headshot'
+              width='512'
+              height='512'
+              decoding='async'
+              data-nimg='1'
+              class='rounded-full bg-zinc-100 object-cover dark:bg-zinc-800 h-12 w-12 md:h-20 md:w-20'
+              sizes='4rem'
+              src='https://res.cloudinary.com/duud9d8dv/image/upload/v1696801306/headshot_mlyfwz.jpg'
+            />
+            <div class='flex flex-col'>
+              <p class='text-zinc-100 font-bold text-lg'>{SITE_TITLE}</p>
+              <span class='text-zinc-200 font-thin'>Software Developer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class='flex flex-col space-y-2'>
+          <span class='text-zinc-100 font-semibold text-lg'>About me</span>
+          <span class='text-zinc-200'>
+            Passionate about end-to-end product development, from design to
+            coding to deployment.</span
+          >
         </div>
 
         <div class='flex flex-col space-y-4'>

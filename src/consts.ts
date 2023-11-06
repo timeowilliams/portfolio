@@ -49,6 +49,11 @@ export const WRITING = [
 // Speaking
 export const SPEAKING = [
   {
+    title: 'Build Projects 10x Faster with Next.js',
+    date: 'Nov 3, 2023',
+    video: 'https://youtu.be/R1Bwa62BQYM?si=Kpt5VELVGJSHvGhq'
+  },
+  {
     title: 'From NextJS to React Native',
     date: 'Aug 1, 2023',
     video: 'https://www.youtube.com/watch?v=Oe8D44nAGVg'
@@ -773,18 +778,8 @@ export const FINISHED_READING = [
 
 export const CURRENTLY_READING = [
   {
-    title: 'The Collected Poems of Audre Lorde',
-    author: 'Audre Lorde',
-    link: 'https://www.amazon.com/Collected-Poems-Audre-Lorde/dp/0393319725/ref=sr_1_1?crid=2Q7XCWSKQ4P5U&keywords=The+Collected+Poems+of+Audre+Lorde&qid=1696828350&sprefix=the+collected+poems+of+audre+lorde%2Caps%2C153&sr=8-1'
-  },
-  {
-    title: 'Why We Sleep',
-    author: 'Matthew Walker, PhD',
-    link: 'https://www.amazon.com/Why-We-Sleep-Unlocking-Dreams/dp/1501144324/ref=sr_1_1?crid=1GVOQ0NTV605N&keywords=Why+We+Sleep&qid=1696828363&sprefix=why+we+sleep%2Caps%2C129&sr=8-1'
-  },
-  {
-    title: 'Girl, Stop Apologizing',
-    author: 'Rachel Hollis',
-    link: 'https://www.amazon.com/Girl-Stop-Apologizing/dp/B07FSTP9WQ/ref=sr_1_1?crid=HKBJZ3IIRYDN&keywords=Girl%2C+Stop+Apologizing&qid=1696828375&sprefix=girl%2C+stop+apologizing%2Caps%2C132&sr=8-1'
+    title: 'Elon Musk',
+    author: 'Walter Issacson',
+    link: 'https://www.amazon.com/Audible-Elon-Musk/dp/B0BX4S57GM/ref=sr_1_1?hvadid=677030092682&hvdev=c&hvlocphy=9031146&hvnetw=g&hvqmt=e&hvrand=6585179363685563091&hvtargid=kwd-1934003453932&hydadcr=22136_13517515&keywords=elon+musk+book+walter+isaacson&qid=1699309154&sr=8-1'
   }
 ]
