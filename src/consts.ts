@@ -75,6 +75,13 @@ export const LINKEDIN = 'https://www.linkedin.com/in/hosnaqasmei/'
 // Reading
 export const FINISHED_READING = [
   {
+    title: 'Elon Musk',
+    author: 'Walter Issacson',
+    link: 'https://www.amazon.com/Audible-Elon-Musk/dp/B0BX4S57GM/ref=sr_1_1?hvadid=677030092682&hvdev=c&hvlocphy=9031146&hvnetw=g&hvqmt=e&hvrand=6585179363685563091&hvtargid=kwd-1934003453932&hydadcr=22136_13517515&keywords=elon+musk+book+walter+isaacson&qid=1699309154&sr=8-1',
+    rating: 4,
+    dateFinished: '2023-11-15'
+  },
+  {
     title: 'Black Friend: Essays',
     author: 'Ziwe',
     link: 'https://www.amazon.com/Book-Ziwe-Fumudoh-ebook/dp/B08WJT6M3Q',
@@ -778,8 +785,8 @@ export const FINISHED_READING = [
 
 export const CURRENTLY_READING = [
   {
-    title: 'Elon Musk',
-    author: 'Walter Issacson',
-    link: 'https://www.amazon.com/Audible-Elon-Musk/dp/B0BX4S57GM/ref=sr_1_1?hvadid=677030092682&hvdev=c&hvlocphy=9031146&hvnetw=g&hvqmt=e&hvrand=6585179363685563091&hvtargid=kwd-1934003453932&hydadcr=22136_13517515&keywords=elon+musk+book+walter+isaacson&qid=1699309154&sr=8-1'
+    title: "The Hitchhiker's Guide to the Galaxy",
+    author: 'Douglas Adams',
+    link: 'https://www.amazon.com/Hitchhikers-Guide-Galaxy-Douglas-Adams/dp/0345391802'
   }
 ]
