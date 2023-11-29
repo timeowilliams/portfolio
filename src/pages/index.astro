@@ -17,6 +17,10 @@ const posts = (await getCollection('blog')).sort(
 <html lang='en'>
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <meta
+      property='og:image'
+      content='./favicon.svg'
+    />
   </head>
   <body class='bg-zinc-900'>
     <Analytics />
