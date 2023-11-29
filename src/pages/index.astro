@@ -11,16 +11,16 @@ import { getCollection } from 'astro:content'
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
+const socialImageURL = new URL(
+  'https://www.hosnaqasmei.com/opengraph-image.png'
+)
 ---
 
 <!doctype html>
 <html lang='en'>
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <meta
-      property='og:image'
-      content='./favicon.svg'
-    />
+    <meta property='og:image' content={socialImageURL} />
   </head>
   <body class='bg-zinc-900'>
     <Analytics />
