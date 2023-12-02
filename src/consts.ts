@@ -75,6 +75,13 @@ export const LINKEDIN = 'https://www.linkedin.com/in/hosnaqasmei/'
 // Reading
 export const FINISHED_READING = [
   {
+    title: 'Pretty Boys Are Poisonous',
+    author: 'Megan Fox',
+    link: 'https://www.amazon.com/Pretty-Boys-Are-Poisonous-Poems/dp/1668050412',
+    rating: 4,
+    dateFinished: '2023-12-01'
+  },
+  {
     title: 'Elon Musk',
     author: 'Walter Issacson',
     link: 'https://www.amazon.com/Audible-Elon-Musk/dp/B0BX4S57GM/ref=sr_1_1?hvadid=677030092682&hvdev=c&hvlocphy=9031146&hvnetw=g&hvqmt=e&hvrand=6585179363685563091&hvtargid=kwd-1934003453932&hydadcr=22136_13517515&keywords=elon+musk+book+walter+isaacson&qid=1699309154&sr=8-1',
@@ -785,8 +792,13 @@ export const FINISHED_READING = [
 
 export const CURRENTLY_READING = [
   {
-    title: "The Hitchhiker's Guide to the Galaxy",
-    author: 'Douglas Adams',
-    link: 'https://www.amazon.com/Hitchhikers-Guide-Galaxy-Douglas-Adams/dp/0345391802'
+    title: "The Right It",
+    author: 'Alberto Savoia',
+    link: 'https://www.amazon.com/Right-Many-Ideas-Yours-Succeed/dp/0062958232/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1701496126&sr=1-1'
+  }
+  {
+    title: "Down the Darin",
+    author: 'Julia Fox',
+    link: 'https://www.amazon.com/Down-Drain-Julia-Fox/dp/1668011506/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1701496529&sr=1-1'
   }
 ]
