@@ -795,7 +795,7 @@ export const CURRENTLY_READING = [
     title: "The Right It",
     author: 'Alberto Savoia',
     link: 'https://www.amazon.com/Right-Many-Ideas-Yours-Succeed/dp/0062958232/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1701496126&sr=1-1'
-  }
+  },
   {
     title: "Down the Darin",
     author: 'Julia Fox',
