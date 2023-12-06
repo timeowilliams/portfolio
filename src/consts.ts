@@ -9,6 +9,15 @@ export const LOCATION = 'Los Angeles, CA'
 // Projects
 export const PROJECTS = [
   {
+    title: 'sadhearts.club',
+    description:
+      'A Curated Collection of the Most Heartfelt and Melancholic Pieces of Art.',
+    link: 'https://sadhearts.club/',
+    image:
+      'https://res.cloudinary.com/duud9d8dv/image/upload/v1701897242/icon_j5nucn.png',
+    status: 'Active'
+  },
+  {
     title: 'DevSetup',
     description: 'Easily discover and share your setup.',
     link: 'https://www.devsetup.co/',
