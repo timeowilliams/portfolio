@@ -9,6 +9,14 @@ export const LOCATION = 'Los Angeles, CA'
 // Projects
 export const PROJECTS = [
   {
+    title: 'Open Graph Vault',
+    description: 'Where all your open graph images live.',
+    link: 'https://opengraphvault.com/',
+    image:
+      'https://res.cloudinary.com/duud9d8dv/image/upload/v1702002009/opengraphvault_jxqlvg.png',
+    status: 'Active'
+  },
+  {
     title: 'sadhearts.club',
     description:
       'A Curated Collection of the Most Heartfelt and Melancholic Pieces of Art.',
