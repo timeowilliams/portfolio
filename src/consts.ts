@@ -9,6 +9,14 @@ export const LOCATION = 'Los Angeles, CA'
 // Projects
 export const PROJECTS = [
   {
+    title: 'ProjectPlannerAI',
+    description: 'Turn your idea into a plan with 1 click.',
+    link: 'https://projectplannerai.com/',
+    image:
+      'https://res.cloudinary.com/duud9d8dv/image/upload/v1704274464/icon_v2tbm7.png',
+    status: 'Active'
+  },
+  {
     title: 'Open Graph Vault',
     description: 'Where all your open graph images live.',
     link: 'https://opengraphvault.com/',
@@ -809,12 +817,12 @@ export const FINISHED_READING = [
 
 export const CURRENTLY_READING = [
   {
-    title: "The Right It",
+    title: 'The Right It',
     author: 'Alberto Savoia',
     link: 'https://www.amazon.com/Right-Many-Ideas-Yours-Succeed/dp/0062958232/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1701496126&sr=1-1'
   },
   {
-    title: "Down the Darin",
+    title: 'Down the Darin',
     author: 'Julia Fox',
     link: 'https://www.amazon.com/Down-Drain-Julia-Fox/dp/1668011506/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1701496529&sr=1-1'
   }
