@@ -48,37 +48,42 @@ function BlogLink({ slug, name }: { slug: string; name: string }) {
 }
 
 async function Views({ slug }: { slug: string }) {
-  let views = await getViewsCount()
+  let views = await getViewsCount();
   return <ViewCounter allViews={views} slug={slug} />;
 }
 
+const socialBorder = `border group hover:border-secondaryDarker duration-200 rounded px-1.5 py-1 border-neutral-800 items-center flex`;
 export default function Home() {
   return (
     <MaxWidthWrapper>
-      <div className="grid grid-cols-1 gap-10">
+      <div className="grid grid-cols-1 gap-12">
         <div className="flex flex-col space-y-10 md:px-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center items-start space-y-4">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
             <div className="flex flex-row items-center space-x-3">
               <Image
                 src={CONFIG.headshot}
                 alt=""
                 width={100}
                 height={100}
-                className="rounded-full h-[58px] w-[58px]"
+                className="rounded-full h-[48px] w-[48px]"
               />
               <div className="flex flex-col">
                 <span className="font-semibold">{CONFIG.name}</span>
                 <span className="text-secondaryDarker">{CONFIG.title}</span>
               </div>
             </div>
-            <div className="flex flex-row space-x-4">
-              <a href="https://twitter.com/hqasmei" target="_blank">
+            <div className="flex flex-row space-x-2">
+              <a
+                href="https://twitter.com/hqasmei"
+                target="_blank"
+                className={`${socialBorder}`}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
                   height="18"
                   viewBox="0 0 24 24"
-                  className="text-zinc-400 hover:text-zinc-300 duration-200 mt-0.5"
+                  className="text-secondaryDarker group-hover:text-secondaryDark duration-200"
                 >
                   <path
                     fill="currentColor"
@@ -86,13 +91,17 @@ export default function Home() {
                   ></path>
                 </svg>
               </a>
-              <a href="https://github.com/hqasmei" target="_blank">
+              <a
+                href="https://github.com/hqasmei"
+                target="_blank"
+                className={`${socialBorder}`}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"
                   height="22"
                   viewBox="0 0 24 24"
-                  className="text-zinc-400 hover:text-zinc-300 duration-200"
+                  className="text-secondaryDarker group-hover:text-secondaryDark duration-200"
                 >
                   <path
                     fill="currentColor"
@@ -100,13 +109,17 @@ export default function Home() {
                   ></path>
                 </svg>
               </a>
-              <a href="https://www.youtube.com/@hqasmei" target="_blank">
+              <a
+                href="https://www.youtube.com/@hqasmei"
+                target="_blank"
+                className={`${socialBorder}`}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"
                   height="22"
                   viewBox="0 0 24 24"
-                  className="text-zinc-400 hover:text-zinc-300 duration-200"
+                  className="text-secondaryDarker group-hover:text-secondaryDark duration-200"
                 >
                   <path
                     fill="currentColor"
@@ -114,13 +127,17 @@ export default function Home() {
                   ></path>
                 </svg>
               </a>
-              <a href="https://discord.com/invite/agzuPEVxhT" target="_blank">
+              <a
+                href="https://discord.com/invite/agzuPEVxhT"
+                target="_blank"
+                className={`${socialBorder}`}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"
                   height="22"
                   viewBox="0 0 24 24"
-                  className="text-zinc-400 hover:text-zinc-300 duration-200"
+                  className="text-secondaryDarker group-hover:text-secondaryDark duration-200"
                 >
                   <path
                     fill="currentColor"
@@ -128,17 +145,17 @@ export default function Home() {
                   ></path>
                 </svg>
               </a>
-
               <a
                 href="https://www.linkedin.com/in/hosnaqasmei/"
                 target="_blank"
+                className={`${socialBorder}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"
                   height="22"
                   viewBox="0 0 24 24"
-                  className="text-zinc-400 hover:text-zinc-300 duration-200"
+                  className="text-secondaryDarker group-hover:text-secondaryDark duration-200"
                 >
                   <path
                     fill="currentColor"

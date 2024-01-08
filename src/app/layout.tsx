@@ -57,7 +57,7 @@ export default function RootLayout({
           src="https://plausible.io/js/script.js"
         ></script>
       </head>
-      <body className={`bg-primary text-secondary text-sm ${inter.className}`}>
+      <body className={`bg-primary text-secondary text-sm md:text-base ${inter.className}`}>
         <main className="min-h-screen flex flex-col items-center">
           <div className="flex-1 w-full flex flex-col gap-12 items-center">
             {children}
