@@ -154,7 +154,7 @@ export default function Home() {
                 );
               })}
             </div>
-            <div className="flex flex-row space-x-1 items-center md:px-6 group cursor-pointer">
+            {/* <div className="flex flex-row space-x-1 items-center md:px-6 group cursor-pointer">
               <span className="text-secondary">All Projects</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -170,9 +170,9 @@ export default function Home() {
                   clipRule="evenodd"
                 />
               </svg>
-            </div>
+            </div> */}
           </div>
-
+{/* 
           <div className="flex flex-col space-y-4 md:px-6">
             <span className="font-semibold">Latest Posts</span>
             <div className="grid grid-cols-1 gap-6">
@@ -202,7 +202,7 @@ export default function Home() {
                 />
               </svg>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </MaxWidthWrapper>
