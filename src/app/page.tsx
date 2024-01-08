@@ -157,7 +157,7 @@ export default function Home() {
 
         <div className="flex flex-col space-y-4">
           <span className="font-semibold md:px-6">Featured Projects</span>
-          <div className="grid grid-cols-1 gap-6 md:gap-1 px-2">
+          <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
             {CONFIG.projects.map((project, idx) => {
               if (project.featured) {
                 return (
@@ -214,7 +214,7 @@ export default function Home() {
 
         <div className="flex flex-col space-y-4">
           <span className="font-semibold md:px-6">Latest Posts</span>
-          <div className="grid grid-cols-1 gap-6 md:gap-1 px-2">
+          <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
             <BlogLink slug="hello-world" name="Hello, World!" />
           </div>
           <Link
