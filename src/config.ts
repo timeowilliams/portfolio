@@ -13,7 +13,7 @@ and experience on web & mobile development.`,
       slug: 'project-planner-ai',
       description: 'Turn your idea into a plan with 1 click. ',
       image:
-        'https://res.cloudinary.com/duud9d8dv/image/upload/v1704274464/icon_v2tbm7.png',
+        'https://res.cloudinary.com/duud9d8dv/image/upload/v1704691486/project-planner-ai_imlf93.png',
       link: 'https://projectplannerai.com/',
     },
     {
@@ -22,7 +22,7 @@ and experience on web & mobile development.`,
       slug: 'open-graph-vault',
       description: 'Where all your open graph images live.',
       image:
-        'https://res.cloudinary.com/duud9d8dv/image/upload/v1702002009/opengraphvault_jxqlvg.png',
+        'https://res.cloudinary.com/duud9d8dv/image/upload/v1704691426/open-graph-vault_pl6sgd.png',
       link: 'https://opengraphvault.com/',
     },
     {
@@ -31,8 +31,36 @@ and experience on web & mobile development.`,
       slug: 'site-muse',
       description: 'Tools for devs and designers to manage bookmarks.',
       image:
-        'https://res.cloudinary.com/duud9d8dv/image/upload/v1698129536/SiteMuse_bgrzpx.png',
+        'https://res.cloudinary.com/duud9d8dv/image/upload/v1704691427/sitemuse_mvkr8v.png',
       link: 'https://sitemuse.co/',
+    },
+    {
+      featured: false,
+      name: 'sadhearts.club',
+      slug: 'sadhearts-club',
+      description:
+        'A curated collection of the most heartfelt pieces of writing.',
+      image:
+        'https://res.cloudinary.com/duud9d8dv/image/upload/v1704691426/sadhearts-club_lg61fz.png',
+      link: 'https://sadhearts.club',
+    },
+    {
+      featured: false,
+      name: 'DevSetup',
+      slug: 'devsetup',
+      description: 'Easily discover and share your setup.',
+      image:
+        'https://res.cloudinary.com/duud9d8dv/image/upload/v1704691426/devsetup_unsidr.png',
+      link: 'https://www.devsetup.co',
+    },
+    {
+      featured: false,
+      name: 'Goalazos',
+      slug: 'goalazos',
+      description: 'A platform for womens football.',
+      image:
+        'https://res.cloudinary.com/duud9d8dv/image/upload/v1704691426/goalazos_e5yepy.png',
+      link: 'https://goalazos.com',
     },
   ],
   posts: [
