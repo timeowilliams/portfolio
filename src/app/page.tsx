@@ -1,8 +1,57 @@
+import { Suspense } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { CONFIG } from '@/config';
+import { getViewsCount } from '@/lib/queries';
+
+import ViewCounter from './posts/view-counter';
+
+function ArrowIcon() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className="text-secondaryDarker"
+    >
+      <path
+        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function BlogLink({ slug, name }: { slug: string; name: string }) {
+  return (
+    <Link
+      href={`/posts/${slug}`}
+      target="_blank"
+      className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
+    >
+      <div className="flex flex-col space-y-2">
+        <span className="text-secondaryDark">{name}</span>
+        <span className="text-secondaryDarker">
+          <Suspense fallback={<p className="h-6" />}>
+            <Views slug={slug} />
+          </Suspense>
+        </span>
+      </div>
+
+      <ArrowIcon />
+    </Link>
+  );
+}
+
+async function Views({ slug }: { slug: string }) {
+  let views = await getViewsCount();
+  return <ViewCounter allViews={views} slug={slug} />;
+}
 
 export default function Home() {
   return (
@@ -135,21 +184,7 @@ export default function Home() {
                         </span>
                       </div>
                     </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-link text-secondaryDarker hidden sm:flex"
-                    >
-                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                    </svg>
+                    <ArrowIcon />
                   </Link>
                 );
               }
@@ -176,37 +211,33 @@ export default function Home() {
             </svg>
           </Link>
         </div>
-        {/* 
-          <div className="flex flex-col space-y-4 md:px-6">
-            <span className="font-semibold">Latest Posts</span>
-            <div className="grid grid-cols-1 gap-6">
-              {CONFIG.posts.map((post, idx) => {
-                return (
-                  <div key={idx} className="flex flex-col space-y-2">
-                    <span className="text-secondaryDark">{post.title}</span>
-                    <span className="text-secondaryDarker">{post.views}</span>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex flex-row space-x-1 items-center group cursor-pointer">
-              <span className="text-secondary">All Posts</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                className="text-secondary group-hover:translate-x-1 duration-200"
-              >
-                <path
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div> */}
+
+        <div className="flex flex-col space-y-4">
+          <span className="font-semibold md:px-6">Latest Posts</span>
+          <div className="grid grid-cols-1 gap-6 md:gap-1 px-2">
+            <BlogLink slug="hello-world" name="Hello, World!" />
+          </div>
+          <Link
+            href="/posts"
+            className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer"
+          >
+            <span className="text-secondary">All Posts</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              className="text-secondary group-hover:translate-x-1 duration-200"
+            >
+              <path
+                fill="currentColor"
+                fillRule="evenodd"
+                d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
+                clipRule="evenodd"
+              />
+            </svg>
+          </Link>
+        </div>
       </div>
     </MaxWidthWrapper>
   );

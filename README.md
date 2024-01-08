@@ -23,5 +23,5 @@
 - Update Vercel Environmental Variables for NEXT_PUBLIC_BASE_URL
 
 ## Resources
-- https://search.google.com/, to see your search performance
 
+- https://search.google.com/, to see your search performance

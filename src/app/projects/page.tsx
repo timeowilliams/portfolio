@@ -31,7 +31,9 @@ export default function ProjectsPage() {
             </svg>
             <span className="text-secondaryDarker">Back</span>
           </Link>
-          <span className="text-4xl font-bold md:px-6 mb-6 md:mb-4">All Projects</span>
+          <span className="text-4xl font-bold md:px-6 mb-6 md:mb-4">
+            All Projects
+          </span>
           <div>
             <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
               {CONFIG.projects.map((project, idx) => {
