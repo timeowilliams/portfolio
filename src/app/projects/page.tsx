@@ -6,6 +6,11 @@ import Link from 'next/link';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { CONFIG } from '@/config';
 
+export const metadata = {
+  title: 'Projects',
+  description: 'Here are all the projects I have built.',
+};
+
 export default function ProjectsPage() {
   return (
     <MaxWidthWrapper className="">

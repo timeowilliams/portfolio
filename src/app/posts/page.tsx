@@ -9,7 +9,7 @@ import { getViewsCount } from '@/lib/queries';
 import ViewCounter from './view-counter';
 
 export const metadata = {
-  title: 'Blog',
+  title: 'Posts',
   description: 'Read my thoughts on software development, design, and more.',
 };
 
@@ -58,16 +58,20 @@ export default function PostsPage() {
                   <Link
                     key={post.slug}
                     href={`/posts/${post.slug}`}
-                    className="flex flex-col duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
+                    className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
                   >
-                    <span className="text-secondaryDark">
-                      {post.metadata.title}
-                    </span>
-                    <span className="text-secondaryDarker">
-                      <Suspense fallback={<p className="h-6" />}>
-                        <Views slug={post.slug} />
-                      </Suspense>
-                    </span>
+                    <div className="flex flex-col space-y-2">
+                      <span className="text-secondaryDark">
+                        {post.metadata.title}
+                      </span>
+                      <span className="text-secondaryDarker">
+                        <Suspense fallback={<p className="h-6" />}>
+                          <Views slug={post.slug} />
+                        </Suspense>
+                      </span>
+                    </div>
+
+                    <ArrowIcon />
                   </Link>
                 ))}
             </div>
@@ -75,6 +79,24 @@ export default function PostsPage() {
         </div>
       </div>
     </MaxWidthWrapper>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className="text-secondaryDarker"
+    >
+      <path
+        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
+        fill="currentColor"
+      />
+    </svg>
   );
 }
 

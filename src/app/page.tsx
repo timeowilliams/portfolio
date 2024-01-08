@@ -31,7 +31,6 @@ function BlogLink({ slug, name }: { slug: string; name: string }) {
   return (
     <Link
       href={`/posts/${slug}`}
-      target="_blank"
       className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
     >
       <div className="flex flex-col space-y-2">
@@ -49,7 +48,7 @@ function BlogLink({ slug, name }: { slug: string; name: string }) {
 }
 
 async function Views({ slug }: { slug: string }) {
-  let views = await getViewsCount();
+  let views = await getViewsCount()
   return <ViewCounter allViews={views} slug={slug} />;
 }
 

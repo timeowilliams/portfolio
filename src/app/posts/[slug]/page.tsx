@@ -1,6 +1,7 @@
 import { cache, Suspense } from 'react';
 
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { increment } from '@/app/posts/actions';
@@ -96,6 +97,20 @@ export default function Blog({ params }: { params: any }) {
 
   return (
     <MaxWidthWrapper>
+      <div className="flex flex-row space-x-4 mb-6 text-sm text-secondaryDarker">
+        <Link
+          href="/"
+          className="hover:text-secondaryDark duration-200 hover:underline"
+        >
+          Home
+        </Link>
+        <Link
+          href="/posts"
+          className="hover:text-secondaryDark duration-200 hover:underline"
+        >
+          More Posts
+        </Link>
+      </div>
       <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
         {post.metadata.title}
       </h1>

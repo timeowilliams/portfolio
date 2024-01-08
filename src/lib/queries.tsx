@@ -25,13 +25,13 @@ let yt = youtube({
 export async function getViewsCount(): Promise<
   { slug: string; count: number }[]
 > {
-  if (!process.env.POSTGRES_URL) {
+  if (!process.env.DATABASE_URL) {
     return [];
   }
 
   noStore();
   const data = await db.select().from(views);
- 
+
   return data;
 }
 
