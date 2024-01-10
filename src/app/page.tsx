@@ -230,8 +230,8 @@ export default function Home() {
 
         <div className="flex flex-col space-y-4">
           <span className="font-semibold md:px-6">Latest Posts</span>
-          <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
-            <BlogLink slug="hello-world" name="Hello, World!" />
+          <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2"> 
+            <BlogLink slug="useful-git-commands" name="Useful Git Commands" />
           </div>
           <Link
             href="/posts"

@@ -1,0 +1,28 @@
+---
+title: 'Useful Git Commands'
+publishedAt: '2024-01-09'
+summary: 'Here are some commands I constantly have to search up, in one place.'
+---
+
+
+### Delete a branch locally
+```bash title="Terminal"
+git branch -d localBranchName
+```
+
+### Delete a branch remotely
+```bash title="Terminal"
+git push origin --delete remoteBranchName
+```
+
+### Remove commit based on commit history position
+```bash title="Terminal"
+git reset --hard HEAD~1
+```
+
+### Remove .env from GitHub
+```bash title="Terminal" 
+git rm -r --cached .env 
+git commit -m 'untracking .env'
+git push origin master
+```
