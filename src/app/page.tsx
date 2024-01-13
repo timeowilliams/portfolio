@@ -235,6 +235,14 @@ export default function Home() {
           <span className="font-semibold md:px-6">Latest Posts</span>
           <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
             <BlogLink slug="useful-git-commands" name="Useful Git Commands" />
+            <BlogLink
+              slug="how-to-build-a-product-not-a-project"
+              name="How to Build a Product, Not a Project"
+            />
+            <BlogLink
+              slug="why-i-pivoted-from-hardware-to-software"
+              name="Why I Pivoted from Hardware to Software"
+            />
           </div>
           <Link
             href="/posts"
