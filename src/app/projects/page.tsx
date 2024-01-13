@@ -47,9 +47,9 @@ export default function ProjectsPage() {
                     key={idx}
                     href={project.link}
                     target="_blank"
-                    className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
+                    className="flex flex-row justify-between space-x-8 md:space-x-0 items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
                   >
-                    <div className="flex flex-row space-x-4">
+                    <div className="flex flex-row space-x-4 items-center">
                       <Image
                         src={project.image}
                         alt=""
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="lucide lucide-link text-secondaryDarker hidden sm:flex"
+                      className="lucide lucide-link text-secondaryDarker w-[20px] md:w-auto"
                     >
                       <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />

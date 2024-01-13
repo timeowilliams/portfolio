@@ -63,7 +63,12 @@ export default function ReadingPage() {
           <div className="flex flex-col space-y-4 mb-6 md:mb-4">
             {sortedYears.map(([year, books]) => (
               <div key={year}>
-                <h2 className="text-2xl font-bold my-4 md:px-4">{year} <span className='font-medium text-base text-neutral-400'>({books.length})</span></h2>
+                <h2 className="text-2xl font-bold my-4 md:px-4">
+                  {year}{' '}
+                  <span className="font-medium text-base text-neutral-400">
+                    ({books.length})
+                  </span>
+                </h2>
                 <div className="grid grid-cols-1 gap-6 md:gap-1">
                   {books.map((book, idx) => {
                     const reformattedDate = reformatDate(book.dateFinished);
@@ -73,7 +78,7 @@ export default function ReadingPage() {
                         key={idx}
                         href={book.link}
                         target="_blank"
-                        className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
+                        className="flex flex-row justify-between  space-x-8 md:space-x-0  items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
                       >
                         <div className="flex flex-row space-x-4">
                           <div className="flex flex-col">
@@ -101,7 +106,7 @@ export default function ReadingPage() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="lucide lucide-link text-secondaryDarker hidden sm:flex"
+                          className="lucide lucide-link text-secondaryDarker w-[20px] md:w-auto"
                         >
                           <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                           <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
