@@ -17,7 +17,7 @@ export default function PostsPage() {
   let allBlogs = getBlogPosts();
   return (
     <MaxWidthWrapper className="">
-      <div className="grid grid-cols-1 gap-10">
+      <div className="grid grid-cols-1 gap-10 pb-10">
         <div className="flex flex-col">
           <Link
             href="/"
