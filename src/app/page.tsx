@@ -57,8 +57,8 @@ const socialBorder = `border group hover:border-secondaryDarker duration-200 rou
 export default function Home() {
   return (
     <MaxWidthWrapper>
-      <div className="grid grid-cols-1 gap-12 pb-10">
-        <div className="flex flex-col space-y-10 md:px-6">
+      <div className="flex flex-col space-y-6 md:space-y-10 pb-10">
+        <div className="flex flex-col space-y-6 md:space-y-10 md:px-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
             <div className="flex flex-row items-center space-x-3">
               <Image
@@ -172,160 +172,164 @@ export default function Home() {
           </span>
         </div>
 
-        {/* Projects */}
-        <div className="flex flex-col space-y-4">
-          <span className="font-semibold md:px-6">Featured Projects</span>
-          <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
-            {CONFIG.projects.map((project, idx) => {
-              if (project.featured) {
-                return (
-                  <Link
-                    key={idx}
-                    href={project.link}
-                    target="_blank"
-                    className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
-                  >
-                    <div className="flex flex-row space-x-4">
-                      <Image
-                        src={project.image}
-                        alt=""
-                        width={40}
-                        height={40}
-                        className="w-[40px] h-[40px]"
-                      />
-                      <div className="flex flex-col">
-                        <span className="text-secondaryDark">
-                          {project.name}
-                        </span>
-                        <span className="text-secondaryDarker">
-                          {project.description}
-                        </span>
+        <div className="flex flex-col space-y-10">
+          {/* Projects */}
+          <div className="flex flex-col space-y-4">
+            <span className="font-semibold md:px-6">Featured Projects</span>
+            <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
+              {CONFIG.projects.map((project, idx) => {
+                if (project.featured) {
+                  return (
+                    <Link
+                      key={idx}
+                      href={project.link}
+                      target="_blank"
+                      className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
+                    >
+                      <div className="flex flex-row space-x-4">
+                        <Image
+                          src={project.image}
+                          alt=""
+                          width={40}
+                          height={40}
+                          className="w-[40px] h-[40px]"
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-secondaryDark">
+                            {project.name}
+                          </span>
+                          <span className="text-secondaryDarker">
+                            {project.description}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                    <ArrowIcon />
-                  </Link>
-                );
-              }
-            })}
-          </div>
-          <Link
-            href="/projects"
-            className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer"
-          >
-            <span className="text-secondary">All Projects</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              className="text-secondary group-hover:translate-x-1 duration-200"
-            >
-              <path
-                fill="currentColor"
-                fillRule="evenodd"
-                d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
-                clipRule="evenodd"
-              />
-            </svg>
-          </Link>
-        </div>
-
-        {/* Posts */}
-        <div className="flex flex-col space-y-4">
-          <span className="font-semibold md:px-6">Latest Posts</span>
-          <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
-            <BlogLink slug="useful-git-commands" name="Useful Git Commands" />
-            <BlogLink
-              slug="how-to-build-a-product-not-a-project"
-              name="How to Build a Product, Not a Project"
-            />
-            <BlogLink
-              slug="why-i-pivoted-from-hardware-to-software"
-              name="Why I Pivoted from Hardware to Software"
-            />
-          </div>
-          <Link
-            href="/posts"
-            className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer"
-          >
-            <span className="text-secondary">All Posts</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              className="text-secondary group-hover:translate-x-1 duration-200"
-            >
-              <path
-                fill="currentColor"
-                fillRule="evenodd"
-                d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
-                clipRule="evenodd"
-              />
-            </svg>
-          </Link>
-        </div>
-
-        {/* Read */}
-        <div className="flex flex-col space-y-4">
-          <span className="font-semibold md:px-6">Recently Read</span>
-          <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
-            {CONFIG.reading
-              .sort(
-                (a, b) =>
-                  new Date(b.dateFinished).getTime() -
-                  new Date(a.dateFinished).getTime(),
-              )
-              .slice(0, 3)
-              .map((book, idx) => {
-                const reformattedDate = reformatDate(book.dateFinished);
-                return (
-                  <Link
-                    key={idx}
-                    href={book.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
-                  >
-                    <div className="flex flex-row space-x-4">
-                      <div className="flex flex-col">
-                        <span className="text-secondaryDark">{book.title}</span>
-                        <span className="text-secondaryDarker">
-                          by {book.author}
-                        </span>
-                        <span className="text-yellow-600">
-                          {'★'.repeat(book.rating)}
-                        </span>
-                        <span className="text-zinc-400">
-                          Finished: {reformattedDate}
-                        </span>
-                      </div>
-                    </div>
-                    <ArrowIcon />
-                  </Link>
-                );
+                      <ArrowIcon />
+                    </Link>
+                  );
+                }
               })}
-          </div>
-          <Link
-            href="/reading"
-            className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer"
-          >
-            <span className="text-secondary">Books I&apos;ve Read</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              className="text-secondary group-hover:translate-x-1 duration-200"
+            </div>
+            <Link
+              href="/projects"
+              className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer"
             >
-              <path
-                fill="currentColor"
-                fillRule="evenodd"
-                d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
-                clipRule="evenodd"
+              <span className="text-secondary">All Projects</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                className="text-secondary group-hover:translate-x-1 duration-200"
+              >
+                <path
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </Link>
+          </div>
+
+          {/* Posts */}
+          <div className="flex flex-col space-y-4">
+            <span className="font-semibold md:px-6">Latest Posts</span>
+            <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
+              <BlogLink slug="useful-git-commands" name="Useful Git Commands" />
+              <BlogLink
+                slug="how-to-build-a-product-not-a-project"
+                name="How to Build a Product, Not a Project"
               />
-            </svg>
-          </Link>
+              <BlogLink
+                slug="why-i-pivoted-from-hardware-to-software"
+                name="Why I Pivoted from Hardware to Software"
+              />
+            </div>
+            <Link
+              href="/posts"
+              className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer"
+            >
+              <span className="text-secondary">All Posts</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                className="text-secondary group-hover:translate-x-1 duration-200"
+              >
+                <path
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </Link>
+          </div>
+
+          {/* Read */}
+          <div className="flex flex-col space-y-4">
+            <span className="font-semibold md:px-6">Recently Read</span>
+            <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
+              {CONFIG.reading
+                .sort(
+                  (a, b) =>
+                    new Date(b.dateFinished).getTime() -
+                    new Date(a.dateFinished).getTime(),
+                )
+                .slice(0, 3)
+                .map((book, idx) => {
+                  const reformattedDate = reformatDate(book.dateFinished);
+                  return (
+                    <Link
+                      key={idx}
+                      href={book.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
+                    >
+                      <div className="flex flex-row space-x-4">
+                        <div className="flex flex-col">
+                          <span className="text-secondaryDark">
+                            {book.title}
+                          </span>
+                          <span className="text-secondaryDarker">
+                            by {book.author}
+                          </span>
+                          <span className="text-yellow-600">
+                            {'★'.repeat(book.rating)}
+                          </span>
+                          <span className="text-zinc-400">
+                            Finished: {reformattedDate}
+                          </span>
+                        </div>
+                      </div>
+                      <ArrowIcon />
+                    </Link>
+                  );
+                })}
+            </div>
+            <Link
+              href="/reading"
+              className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer"
+            >
+              <span className="text-secondary">Books I&apos;ve Read</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                className="text-secondary group-hover:translate-x-1 duration-200"
+              >
+                <path
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </MaxWidthWrapper>
