@@ -96,7 +96,7 @@ export default function Blog({ params }: { params: any }) {
   }
 
   return (
-    <MaxWidthWrapper>
+    <MaxWidthWrapper className='pb-10'>
       <div className="flex flex-row space-x-4 mb-6 text-sm text-secondaryDarker">
         <Link
           href="/"
