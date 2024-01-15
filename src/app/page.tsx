@@ -235,7 +235,7 @@ export default function Home() {
           <div className="flex flex-col space-y-4">
             <span className="font-semibold md:px-6">Latest Posts</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
-              <BlogLink slug="useful-git-commands" name="Useful Git Commands" />
+              <BlogLink slug="most-used-git-commands" name="Most Used Git Commands" />
               <BlogLink
                 slug="how-to-build-a-product-not-a-project"
                 name="How to Build a Product, Not a Project"
