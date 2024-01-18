@@ -7,9 +7,13 @@ export function cn(...inputs: ClassValue[]) {
 
 export function reformatDate(dateStr: string) {
   const date = new Date(dateStr);
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth() is zero-based
-  const day = String(date.getDate()).padStart(2, '0');
-  const year = date.getFullYear();
 
-  return `${month}/${day}/${year}`;
+  // Correctly typed options for toLocaleDateString
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  };
+
+  return date.toLocaleDateString('en-US', options);
 }

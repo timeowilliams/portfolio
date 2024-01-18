@@ -1,34 +1,41 @@
 ---
 title: 'Most Used Git Commands'
-publishedAt: '2024-01-09'
+date: '2024-01-09'
 summary: 'Here are some commands I constantly have to search up, in one place.'
+slug: 'most-used-git-commands'
+featured: true
 ---
 
-### Update a (not yet pushed) commit message
-```bash title="Terminal"
+Here are some of the most commonly use git commands I use. Wanted to put it in one place to reference back to whenever.
+
+### Amend an unpushed commit message 
+
+```js title="Terminal"
 git commit --amend
-# resource: https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message
 ```
 
-
 ### Delete a branch locally
-```bash title="Terminal"
+
+```js title="Terminal"
 git branch -d localBranchName
 ```
 
 ### Delete a branch remotely
-```bash title="Terminal"
+
+```js title="Terminal"
 git push origin --delete remoteBranchName
 ```
 
 ### Remove commit based on commit history position
-```bash title="Terminal"
+
+```js title="Terminal"
 git reset --hard HEAD~1
 ```
 
 ### Remove .env from GitHub
-```bash title="Terminal" 
-git rm -r --cached .env 
+
+```js title="Terminal"
+git rm -r --cached .env
 git commit -m 'untracking .env'
 git push origin master
 ```

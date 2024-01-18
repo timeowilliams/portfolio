@@ -1,20 +1,18 @@
-import React, { Suspense } from 'react';
-
+import Image from 'next/image';
 import Link from 'next/link';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
-import { getBlogPosts } from '@/lib/blog';
-import { getViewsCount } from '@/lib/queries';
-
-import ViewCounter from './view-counter';
+import { reformatDate } from '@/lib/utils';
+import { allPosts } from 'contentlayer/generated';
 
 export const metadata = {
   title: 'Posts',
   description: 'Read my thoughts on software development, design, and more.',
 };
 
-export default function PostsPage() {
-  let allBlogs = getBlogPosts();
+export default async function PortfolioIndex() {
+  const items = allPosts;
+
   return (
     <MaxWidthWrapper className="">
       <div className="grid grid-cols-1 gap-10 pb-10">
@@ -44,12 +42,9 @@ export default function PostsPage() {
           </span>
           <div>
             <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
-              {allBlogs
+              {items
                 .sort((a, b) => {
-                  if (
-                    new Date(a.metadata.publishedAt) >
-                    new Date(b.metadata.publishedAt)
-                  ) {
+                  if (new Date(a.date) > new Date(b.date)) {
                     return -1;
                   }
                   return 1;
@@ -61,17 +56,25 @@ export default function PostsPage() {
                     className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
                   >
                     <div className="flex flex-col space-y-2">
-                      <span className="text-secondaryDark">
-                        {post.metadata.title}
-                      </span>
+                      <span className="text-secondaryDark">{post.title}</span>
                       <span className="text-secondaryDarker">
-                        <Suspense fallback={<p className="h-6" />}>
-                          <Views slug={post.slug} />
-                        </Suspense>
+                        {reformatDate(post.date)}
                       </span>
                     </div>
 
-                    <ArrowIcon />
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-secondaryDarker"
+                    >
+                      <path
+                        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
+                        fill="currentColor"
+                      />
+                    </svg>
                   </Link>
                 ))}
             </div>
@@ -80,28 +83,4 @@ export default function PostsPage() {
       </div>
     </MaxWidthWrapper>
   );
-}
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      className="text-secondaryDarker"
-    >
-      <path
-        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-async function Views({ slug }: { slug: string }) {
-  let views = await getViewsCount();
-
-  return <ViewCounter allViews={views} slug={slug} />;
 }

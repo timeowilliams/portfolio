@@ -1,0 +1,20 @@
+{
+  "title": "Most Used Git Commands",
+  "date": "2024-01-09T00:00:00.000Z",
+  "slug": "most-used-git-commands",
+  "summary": "Here are some commands I constantly have to search up, in one place.",
+  "featured": true,
+  "body": {
+    "raw": "\nHere are some of the most commonly use git commands I use. Wanted to put it in one place to reference back to whenever.\n\n### Amend an unpushed commit message \n\n```js title=\"Terminal\"\ngit commit --amend\n```\n\n### Delete a branch locally\n\n```js title=\"Terminal\"\ngit branch -d localBranchName\n```\n\n### Delete a branch remotely\n\n```js title=\"Terminal\"\ngit push origin --delete remoteBranchName\n```\n\n### Remove commit based on commit history position\n\n```js title=\"Terminal\"\ngit reset --hard HEAD~1\n```\n\n### Remove .env from GitHub\n\n```js title=\"Terminal\"\ngit rm -r --cached .env\ngit commit -m 'untracking .env'\ngit push origin master\n```\n",
+    "html": "<p>Here are some of the most commonly use git commands I use. Wanted to put it in one place to reference back to whenever.</p>\n<h3>Amend an unpushed commit message</h3>\n<pre><code class=\"language-js\">git commit --amend\n</code></pre>\n<h3>Delete a branch locally</h3>\n<pre><code class=\"language-js\">git branch -d localBranchName\n</code></pre>\n<h3>Delete a branch remotely</h3>\n<pre><code class=\"language-js\">git push origin --delete remoteBranchName\n</code></pre>\n<h3>Remove commit based on commit history position</h3>\n<pre><code class=\"language-js\">git reset --hard HEAD~1\n</code></pre>\n<h3>Remove .env from GitHub</h3>\n<pre><code class=\"language-js\">git rm -r --cached .env\ngit commit -m 'untracking .env'\ngit push origin master\n</code></pre>"
+  },
+  "_id": "posts/most-used-git-commands.mdx",
+  "_raw": {
+    "sourceFilePath": "posts/most-used-git-commands.mdx",
+    "sourceFileName": "most-used-git-commands.mdx",
+    "sourceFileDir": "posts",
+    "contentType": "mdx",
+    "flattenedPath": "posts/most-used-git-commands"
+  },
+  "type": "Posts"
+}

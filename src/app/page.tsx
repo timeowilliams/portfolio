@@ -5,56 +5,12 @@ import Link from 'next/link';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { CONFIG } from '@/config';
-import { getViewsCount } from '@/lib/queries';
 import { reformatDate } from '@/lib/utils';
-
-import ViewCounter from './posts/view-counter';
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      className="text-secondaryDarker"
-    >
-      <path
-        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function BlogLink({ slug, name }: { slug: string; name: string }) {
-  return (
-    <Link
-      href={`/posts/${slug}`}
-      className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
-    >
-      <div className="flex flex-col space-y-2">
-        <span className="text-secondaryDark">{name}</span>
-        <span className="text-secondaryDarker">
-          <Suspense fallback={<p className="h-6" />}>
-            <Views slug={slug} />
-          </Suspense>
-        </span>
-      </div>
-
-      <ArrowIcon />
-    </Link>
-  );
-}
-
-async function Views({ slug }: { slug: string }) {
-  let views = await getViewsCount();
-  return <ViewCounter allViews={views} slug={slug} />;
-}
+import { allPosts } from 'contentlayer/generated';
 
 const socialBorder = `border group hover:border-secondaryDarker duration-200 rounded px-1.5 py-1 border-neutral-800 items-center flex`;
 export default function Home() {
+  const items = allPosts;
   return (
     <MaxWidthWrapper>
       <div className="flex flex-col space-y-6 md:space-y-10 pb-10">
@@ -203,7 +159,19 @@ export default function Home() {
                           </span>
                         </div>
                       </div>
-                      <ArrowIcon />
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="text-secondaryDarker"
+                      >
+                        <path
+                          d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
+                          fill="currentColor"
+                        />
+                      </svg>
                     </Link>
                   );
                 }
@@ -211,9 +179,9 @@ export default function Home() {
             </div>
             <Link
               href="/projects"
-              className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer"
+              className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer justify-end"
             >
-              <span className="text-secondary">All Projects</span>
+              <span className="text-secondary text-sm">All Projects</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -235,21 +203,48 @@ export default function Home() {
           <div className="flex flex-col space-y-4">
             <span className="font-semibold md:px-6">Latest Posts</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
-              <BlogLink slug="most-used-git-commands" name="Most Used Git Commands" />
-              <BlogLink
-                slug="how-to-build-a-product-not-a-project"
-                name="How to Build a Product, Not a Project"
-              />
-              <BlogLink
-                slug="why-i-pivoted-from-hardware-to-software"
-                name="Why I Pivoted from Hardware to Software"
-              />
+              {items
+                .filter((post) => post.featured) // Filtering to only include items where featured is true
+                .sort((a, b) => {
+                  if (new Date(a.date) > new Date(b.date)) {
+                    return -1;
+                  }
+                  return 1;
+                })
+                .map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/posts/${post.slug}`}
+                    className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
+                  >
+                    <div className="flex flex-col space-y-2">
+                      <span className="text-secondaryDark">{post.title}</span>
+                      <span className="text-secondaryDarker">
+                        {reformatDate(post.date)}
+                      </span>
+                    </div>
+
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-secondaryDarker"
+                    >
+                      <path
+                        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </Link>
+                ))}
             </div>
             <Link
               href="/posts"
-              className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer"
+              className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer  justify-end"
             >
-              <span className="text-secondary">All Posts</span>
+              <span className="text-secondary text-sm">All Posts</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -275,7 +270,7 @@ export default function Home() {
                 .sort(
                   (a, b) =>
                     new Date(b.dateFinished).getTime() -
-                    new Date(a.dateFinished).getTime(),
+                    new Date(a.dateFinished).getTime()
                 )
                 .slice(0, 3)
                 .map((book, idx) => {
@@ -291,29 +286,38 @@ export default function Home() {
                       <div className="flex flex-row space-x-4">
                         <div className="flex flex-col">
                           <span className="text-secondaryDark">
-                            {book.title}
+                            {book.title}{' '}
+                            <span className="text-secondaryDarker">
+                              by {book.author}
+                            </span>
                           </span>
-                          <span className="text-secondaryDarker">
-                            by {book.author}
-                          </span>
-                          <span className="text-yellow-600">
-                            {'★'.repeat(book.rating)}
-                          </span>
-                          <span className="text-zinc-400">
-                            Finished: {reformattedDate}
-                          </span>
+                          <span className='text-secondaryDarker'>Finished: {reformatDate(book.dateFinished)}</span>
                         </div>
                       </div>
-                      <ArrowIcon />
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="text-secondaryDarker"
+                      >
+                        <path
+                          d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
+                          fill="currentColor"
+                        />
+                      </svg>
                     </Link>
                   );
                 })}
             </div>
             <Link
               href="/reading"
-              className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer"
+              className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer justify-end"
             >
-              <span className="text-secondary">Books I&apos;ve Read</span>
+              <span className="text-secondary text-sm">
+                Books I&apos;ve Read
+              </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
