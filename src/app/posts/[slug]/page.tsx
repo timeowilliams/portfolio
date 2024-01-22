@@ -6,8 +6,8 @@ import { notFound } from 'next/navigation';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { reformatDate } from '@/lib/utils';
-import { MDXProvider } from '@mdx-js/react';
 import { allPosts } from 'contentlayer/generated';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 
 export async function generateMetadata({
   params,
@@ -54,6 +54,7 @@ export default function Blog({ params }: { params: any }) {
   if (!post) {
     notFound();
   }
+  const MDXContent = useMDXComponent(post.body.code);
 
   return (
     <MaxWidthWrapper className="pb-10">
@@ -80,7 +81,7 @@ export default function Blog({ params }: { params: any }) {
         </p>
       </div>
       <article className="prose prose-invert">
-        <div dangerouslySetInnerHTML={{ __html: post.body.html }} />
+        <MDXContent />
       </article>
     </MaxWidthWrapper>
   );

@@ -10,31 +10,31 @@ Here are some of the most commonly use git commands I use. Wanted to put it in o
 
 ### Amend an unpushed commit message 
 
-```js title="Terminal"
+```bash title="Terminal"
 git commit --amend
 ```
 
 ### Delete a branch locally
 
-```js title="Terminal"
+```bash title="Terminal"
 git branch -d localBranchName
 ```
 
 ### Delete a branch remotely
 
-```js title="Terminal"
+```bash title="Terminal"
 git push origin --delete remoteBranchName
 ```
 
 ### Remove commit based on commit history position
 
-```js title="Terminal"
+```bash title="Terminal"
 git reset --hard HEAD~1
 ```
 
 ### Remove .env from GitHub
 
-```js title="Terminal"
+```bash title="Terminal"
 git rm -r --cached .env
 git commit -m 'untracking .env'
 git push origin master

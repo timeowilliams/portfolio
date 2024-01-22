@@ -19,8 +19,8 @@ export type Posts = {
   summary: string
   image?: Image | undefined
   featured?: boolean | undefined
-  /** Markdown file body */
-  body: Markdown
+  /** MDX file body */
+  body: MDX
 
 }  
 

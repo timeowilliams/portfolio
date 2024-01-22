@@ -92,6 +92,13 @@ and experience on web & mobile development.`,
   ],
   reading: [
     {
+      title: 'The Defining Decade',
+      author: 'Meg Jay',
+      link: 'https://www.amazon.com/Defining-Decade-Your-Twenties-Matter/dp/1538754231/ref=asc_df_1538754231/?gclid=Cj0KCQiAwbitBhDIARIsABfFYIK9UJcNeFPHIzZ0qGoMCHyPfAekQAK-Hiz0a0rxvWJRHih--OrpHj4aAvaREALw_wcB&hvadid=560440526833&hvdev=c&hvdvcmdl&hvlocint&hvlocphy=9031146&hvnetw=g&hvpone&hvpos&hvptwo&hvqmt&hvrand=7354947562852789502&hvtargid=pla-1075619695373&linkCode=df0&mcid=a6fb9a1325433eb3b18e28ac4eb06731&psc=1&tag=hyprod-20',
+      rating: 5,
+      dateFinished: '2024-01-22',
+    },
+    {
       title: 'Notes on Shapeshifting',
       author: 'Gabi Abrão',
       link: 'https://www.amazon.com/Notes-Shapeshifting-Gabi-Abr%C3%A3o/dp/1945649828/ref=sr_1_1?crid=3JFGHU1684X5Y&keywords=notes+on+shapeshifting+by+gabi+abrao&qid=1705132364&sprefix=Notes+on+sha%2Caps%2C158&sr=8-1',
