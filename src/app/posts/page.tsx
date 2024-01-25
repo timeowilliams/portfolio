@@ -1,18 +1,18 @@
-import Image from 'next/image';
+import React from 'react';
+
 import Link from 'next/link';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
+import { getPosts } from '@/lib/posts';
 import { reformatDate } from '@/lib/utils';
-import { allPosts } from 'contentlayer/generated';
 
 export const metadata = {
   title: 'Posts',
-  description: 'Read my thoughts on software development, design, and more.',
+  description: 'Read my thoughts.',
 };
 
-export default async function PortfolioIndex() {
-  const items = allPosts;
-
+export default function PostsPage() {
+  let allPosts = getPosts();
   return (
     <MaxWidthWrapper className="">
       <div className="grid grid-cols-1 gap-10 pb-10">
@@ -42,9 +42,12 @@ export default async function PortfolioIndex() {
           </span>
           <div>
             <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
-              {items
+              {allPosts
                 .sort((a, b) => {
-                  if (new Date(a.date) > new Date(b.date)) {
+                  if (
+                    new Date(a.metadata.publishedAt) >
+                    new Date(b.metadata.publishedAt)
+                  ) {
                     return -1;
                   }
                   return 1;
@@ -56,9 +59,11 @@ export default async function PortfolioIndex() {
                     className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
                   >
                     <div className="flex flex-col space-y-2">
-                      <span className="text-secondaryDark">{post.title}</span>
+                      <span className="text-secondaryDark">
+                        {post.metadata.title}
+                      </span>
                       <span className="text-secondaryDarker">
-                        {reformatDate(post.date)}
+                        {reformatDate(post.metadata.publishedAt)}
                       </span>
                     </div>
 

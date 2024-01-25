@@ -11,7 +11,7 @@ type Book = (typeof CONFIG.reading)[number];
 type BooksByYear = { [year: string]: Book[] };
 
 export const metadata = {
-  title: 'Projects',
+  title: 'Read',
   description: 'Here are all the projects I have built.',
 };
 

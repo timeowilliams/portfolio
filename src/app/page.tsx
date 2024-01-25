@@ -1,16 +1,16 @@
-import { Suspense } from 'react';
-
 import Image from 'next/image';
 import Link from 'next/link';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { CONFIG } from '@/config';
+import { getPosts } from '@/lib/posts';
 import { reformatDate } from '@/lib/utils';
-import { allPosts } from 'contentlayer/generated';
 
 const socialBorder = `border group hover:border-secondaryDarker duration-200 rounded px-1.5 py-1 border-neutral-800 items-center flex`;
+
 export default function Home() {
-  const items = allPosts;
+  let allPosts = getPosts();
+
   return (
     <MaxWidthWrapper>
       <div className="flex flex-col space-y-6 md:space-y-10 pb-10">
@@ -201,16 +201,19 @@ export default function Home() {
 
           {/* Posts */}
           <div className="flex flex-col space-y-4">
-            <span className="font-semibold md:px-6">Latest Posts</span>
+            <span className="font-semibold md:px-6">Recent Posts</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
-              {items
-                .filter((post) => post.featured) // Filtering to only include items where featured is true
+              {allPosts
                 .sort((a, b) => {
-                  if (new Date(a.date) > new Date(b.date)) {
+                  if (
+                    new Date(a.metadata.publishedAt) >
+                    new Date(b.metadata.publishedAt)
+                  ) {
                     return -1;
                   }
                   return 1;
                 })
+                .slice(0, 3)
                 .map((post) => (
                   <Link
                     key={post.slug}
@@ -218,9 +221,11 @@ export default function Home() {
                     className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
                   >
                     <div className="flex flex-col space-y-2">
-                      <span className="text-secondaryDark">{post.title}</span>
+                      <span className="text-secondaryDark">
+                        {post.metadata.title}
+                      </span>
                       <span className="text-secondaryDarker">
-                        {reformatDate(post.date)}
+                        {reformatDate(post.metadata.publishedAt)}
                       </span>
                     </div>
 
@@ -262,15 +267,15 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Read */}
+          {/* Reads */}
           <div className="flex flex-col space-y-4">
-            <span className="font-semibold md:px-6">Recently Read</span>
+            <span className="font-semibold md:px-6">Recent Reads</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {CONFIG.reading
                 .sort(
                   (a, b) =>
                     new Date(b.dateFinished).getTime() -
-                    new Date(a.dateFinished).getTime()
+                    new Date(a.dateFinished).getTime(),
                 )
                 .slice(0, 3)
                 .map((book, idx) => {
@@ -291,7 +296,9 @@ export default function Home() {
                               by {book.author}
                             </span>
                           </span>
-                          <span className='text-secondaryDarker'>Finished: {reformatDate(book.dateFinished)}</span>
+                          <span className="text-secondaryDarker">
+                            Finished: {reformatDate(book.dateFinished)}
+                          </span>
                         </div>
                       </div>
                       <svg

@@ -5,33 +5,33 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
+import { CustomMDX } from '@/components/mdx';
+import { getPosts } from '@/lib/posts';
 import { reformatDate } from '@/lib/utils';
-import { allPosts } from 'contentlayer/generated';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 
 export async function generateMetadata({
   params,
 }: {
   params: any;
 }): Promise<Metadata | undefined> {
-  const post = allPosts.find((post) => post.slug === params.slug);
+  const post = getPosts().find((post) => post.slug === params.slug);
+
   if (!post) {
     return;
   }
 
-  let { title, date: publishedTime, summary: description, image } = post;
-  let ogImage = image
-    ? `https://www.hosnaqasmei.com${image}`
-    : `https://www.hosnaqasmei.com/og?title=${title}`;
+  let { metadata, slug, content } = post;
+  let ogImage = metadata.image
+    ? `https://www.hosnaqasmei.com${metadata.image}`
+    : `https://www.hosnaqasmei.com/og?title=${metadata.title}`;
 
   return {
-    title,
-    description,
+    title: metadata.title,
+    description: metadata.summary,
     openGraph: {
-      title,
-      description,
+      title: metadata.title,
+      description: metadata.summary,
       type: 'article',
-      publishedTime,
       url: `https://www.hosnaqasmei.com/posts/${post.slug}`,
       images: [
         {
@@ -41,23 +41,22 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: metadata.title,
+      description: metadata.summary,
       images: [ogImage],
     },
   };
 }
 
 export default function Blog({ params }: { params: any }) {
-  const post = allPosts.find((post) => post.slug === params.slug);
+  const post = getPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
   }
-  const MDXContent = useMDXComponent(post.body.code);
 
   return (
-    <MaxWidthWrapper className="pb-10">
+    <MaxWidthWrapper>
       <div className="flex flex-row space-x-4 mb-6 text-sm text-secondaryDarker">
         <Link
           href="/"
@@ -73,15 +72,15 @@ export default function Blog({ params }: { params: any }) {
         </Link>
       </div>
       <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
-        {post.title}
+        {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {reformatDate(post.date)}
+          {reformatDate(post.metadata.publishedAt)}
         </p>
       </div>
-      <article className="prose prose-invert">
-        <MDXContent />
+      <article className="prose prose-invert pb-10">
+        <CustomMDX source={post.content} />
       </article>
     </MaxWidthWrapper>
   );
