@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
             whiteSpace: 'pre-wrap',
           }}
         >
-          Hi
+          {postTitle}
         </div>
       </div>
     ),
