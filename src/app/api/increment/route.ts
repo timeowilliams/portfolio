@@ -7,14 +7,7 @@ export const config = {
   runtime: 'edge',
 };
 
-export default async function incr(req: NextRequest): Promise<NextResponse> {
-  if (req.method !== 'POST') {
-    return new NextResponse('use POST', { status: 405 });
-  }
-  if (req.headers.get('Content-Type') !== 'application/json') {
-    return new NextResponse('must be json', { status: 400 });
-  }
-
+export async function POST(req: NextRequest): Promise<NextResponse> {
   const body = await req.json();
   let slug: string | undefined = undefined;
   if ('slug' in body) {
@@ -43,6 +36,6 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
       new NextResponse(null, { status: 202 });
     }
   }
-  await redis.incr(['pageviews', 'projects', slug].join(':'));
+  await redis.incr(['pageviews', 'posts', slug].join(':'));
   return new NextResponse(null, { status: 202 });
 }

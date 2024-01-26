@@ -5,12 +5,26 @@ import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { CONFIG } from '@/config';
 import { getPosts } from '@/lib/posts';
 import { reformatDate } from '@/lib/utils';
+import { Redis } from '@upstash/redis';
+
+const redis = Redis.fromEnv();
+export const revalidate = 0;
 
 const socialBorder = `border group hover:border-secondaryDarker duration-200 rounded px-1.5 py-1 border-neutral-800 items-center flex`;
 
-export default function Home() {
+export default async function Home() {
   let allPosts = getPosts();
-
+  const views = (
+    await redis.mget<number[]>(
+      ...allPosts.map((p) => ['pageviews', 'posts', p.slug].join(':')),
+    )
+  ).reduce(
+    (acc, v, i) => {
+      acc[allPosts[i].slug] = v ?? 0;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
   return (
     <MaxWidthWrapper>
       <div className="flex flex-col space-y-6 md:space-y-10 pb-10">
@@ -224,9 +238,18 @@ export default function Home() {
                       <span className="text-secondaryDark">
                         {post.metadata.title}
                       </span>
-                      <span className="text-secondaryDarker">
-                        {reformatDate(post.metadata.publishedAt)}
-                      </span>
+                      <div className="flex flex-row space-x-2 items-center text-secondaryDarker">
+                        <span>{reformatDate(post.metadata.publishedAt)}</span>
+                        <span className="h-1 w-1 bg-secondaryDarker rounded-full" />
+                        <span>
+                          <span>
+                            {Intl.NumberFormat('en-US', {
+                              notation: 'compact',
+                            }).format(views[post.slug])}{' '}
+                            {' views'}
+                          </span>
+                        </span>
+                      </div>
                     </div>
 
                     <svg

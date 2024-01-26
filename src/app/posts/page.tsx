@@ -8,8 +8,7 @@ import { reformatDate } from '@/lib/utils';
 import { Redis } from '@upstash/redis';
 
 const redis = Redis.fromEnv();
-
-export const revalidate = 60;
+export const revalidate = 0;
 
 export const metadata = {
   title: 'Posts',
@@ -20,7 +19,7 @@ export default async function PostsPage() {
   let allPosts = getPosts();
   const views = (
     await redis.mget<number[]>(
-      ...allPosts.map((p) => ['pageviews', 'projects', p.slug].join(':')),
+      ...allPosts.map((p) => ['pageviews', 'posts', p.slug].join(':')),
     )
   ).reduce(
     (acc, v, i) => {
@@ -29,7 +28,6 @@ export default async function PostsPage() {
     },
     {} as Record<string, number>,
   );
-
   return (
     <MaxWidthWrapper className="">
       <div className="grid grid-cols-1 gap-10 pb-10">
@@ -81,15 +79,18 @@ export default async function PostsPage() {
                           {post.metadata.title}
                         </span>
 
-                        <span className="text-zinc-500 text-xs  flex items-center gap-1">
-                          {/* <Eye className="w-4 h-4" />{' '} */}
-                          {Intl.NumberFormat('en-US', {
-                            notation: 'compact',
-                          }).format(views[post.slug] ?? 0)}
-                        </span>
-                        <span className="text-secondaryDarker">
-                          {reformatDate(post.metadata.publishedAt)}
-                        </span>
+                        <div className="flex flex-row space-x-2 items-center text-secondaryDarker">
+                          <span>{reformatDate(post.metadata.publishedAt)}</span>
+                          <span className="h-1 w-1 bg-secondaryDarker rounded-full" />
+                          <span>
+                            <span>
+                              {Intl.NumberFormat('en-US', {
+                                notation: 'compact',
+                              }).format(views[post.slug])}{' '}
+                              {' views'}
+                            </span>
+                          </span>
+                        </div>
                       </div>
 
                       <svg

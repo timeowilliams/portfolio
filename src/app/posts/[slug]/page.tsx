@@ -8,8 +8,12 @@ import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { CustomMDX } from '@/components/mdx';
 import { getPosts } from '@/lib/posts';
 import { reformatDate } from '@/lib/utils';
+import { Redis } from '@upstash/redis';
 
 import { ReportView } from './view';
+
+const redis = Redis.fromEnv();
+export const revalidate = 0;
 
 export async function generateMetadata({
   params,
@@ -50,15 +54,19 @@ export async function generateMetadata({
   };
 }
 
-export default function Blog({ params }: { params: any }) {
+export default async function Blog({ params }: { params: any }) {
   const post = getPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
   }
+  const views =
+    (await redis.get<number>(['pageviews', 'posts', params.slug].join(':'))) ??
+    0;
 
   return (
     <MaxWidthWrapper>
+      <ReportView slug={post.slug} />
       <div className="flex flex-row space-x-4 mb-6 text-sm text-secondaryDarker">
         <Link
           href="/"
@@ -77,14 +85,22 @@ export default function Blog({ params }: { params: any }) {
         {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {reformatDate(post.metadata.publishedAt)}
-        </p>
+        <div className="flex flex-row space-x-2 items-center text-secondaryDarker">
+          <span>{reformatDate(post.metadata.publishedAt)}</span>
+          <span className="h-1 w-1 bg-secondaryDarker rounded-full" />
+          <span>
+            <span>
+              {Intl.NumberFormat('en-US', { notation: 'compact' }).format(
+                views,
+              )}{' '}
+              {' views'}
+            </span>
+          </span>
+        </div>
       </div>
       <article className="prose prose-invert pb-10">
         <CustomMDX source={post.content} />
       </article>
-      <ReportView slug={post.slug} />
     </MaxWidthWrapper>
   );
 }
