@@ -9,6 +9,8 @@ import { CustomMDX } from '@/components/mdx';
 import { getPosts } from '@/lib/posts';
 import { reformatDate } from '@/lib/utils';
 
+import { ReportView } from './view';
+
 export async function generateMetadata({
   params,
 }: {
@@ -82,6 +84,7 @@ export default function Blog({ params }: { params: any }) {
       <article className="prose prose-invert pb-10">
         <CustomMDX source={post.content} />
       </article>
+      <ReportView slug={post.slug} />
     </MaxWidthWrapper>
   );
 }
