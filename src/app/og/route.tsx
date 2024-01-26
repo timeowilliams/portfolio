@@ -26,10 +26,10 @@ export async function GET(req: NextRequest) {
       >
         <div
           style={{
-            marginLeft: 190,
+            marginLeft: 80,
             marginRight: 190,
             display: 'flex',
-            fontSize: 130,
+            fontSize: 90,
             fontFamily: 'Kaisei Tokumin',
             letterSpacing: '-0.05em',
             fontStyle: 'normal',
@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
             whiteSpace: 'pre-wrap',
           }}
         >
-          {postTitle}
+          Hi
         </div>
       </div>
     ),
