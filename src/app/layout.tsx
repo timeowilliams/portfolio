@@ -52,12 +52,14 @@ export default function RootLayout({
           sizes="<generated>"
         />
         <script
-          defer
-          data-domain="sadhearts.club"
-          src="https://plausible.io/js/script.js"
+          src="https://beamanalytics.b-cdn.net/beam.min.js"
+          data-token="a07e2826-5910-4684-9e69-0ec4388a0509"
+          async
         ></script>
       </head>
-      <body className={`bg-primary text-secondary text-sm md:text-base ${inter.className}`}>
+      <body
+        className={`bg-primary text-secondary text-sm md:text-base ${inter.className}`}
+      >
         <main className="min-h-screen flex flex-col items-center">
           <div className="flex-1 w-full flex flex-col gap-12 items-center">
             {children}
