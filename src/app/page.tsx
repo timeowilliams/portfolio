@@ -218,6 +218,7 @@ export default async function Home() {
             <span className="font-semibold md:px-6">Recent Posts</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {allPosts
+                .filter((post) => post.metadata.featured === 'true')
                 .sort((a, b) => {
                   if (
                     new Date(a.metadata.publishedAt) >
