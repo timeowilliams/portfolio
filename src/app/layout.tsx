@@ -63,22 +63,22 @@ export default function RootLayout({
         <meta property="ogititle" content="Hosna Qasmei" />
         <meta property="og:description" content="Developer & YouTuber." />
         <meta property="og:url" content="https://www.hosnaqasmei.com/" />
-        <meta property="og: site_name" content="Hosna Qasmei" />
-        <meta property="og: locale" content="en_US" />
-        <meta property="og: image: type" content="image/jpeg" />
-        <meta property="og: image:width" content="1200" />
-        <meta property="og: image:height" content="630" />
+        <meta property="og:site_name" content="Hosna Qasmei" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta
-          property="og: image"
+          property="og:image"
           content="https://www.hosnaqasmei.com/opengraph-image.jpg?d69767cd956a7bc0"
         />
         <meta property="og:type" content="website" />
-        <meta name="twitter: card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hosna Qasmei" />
         <meta name="twitter:description" content="Developer & YouTuber" />
-        <meta name="twitter: image: type" content=" image/jpeg" />
-        <meta name="twitter: image:width" content="1200" />
-        <meta name="twitter: image:height" content="630" />
+        <meta name="twitter:image:type" content=" image/jpeg" />
+        <meta name="twitter:image:width" content="1200" />
+        <meta name="twitter:image:height" content="630" />
         <meta
           name="twitter: image"
           content="https://www.hosnaqasmei.com/opengraph-image.jpg?d69767cd956a7bc0"
