@@ -80,7 +80,7 @@ export default function RootLayout({
         <meta name="twitter:image:width" content="1200" />
         <meta name="twitter:image:height" content="630" />
         <meta
-          name="twitter: image"
+          name="twitter:image"
           content="https://www.hosnaqasmei.com/opengraph-image.jpg?d69767cd956a7bc0"
         />
       </head>
