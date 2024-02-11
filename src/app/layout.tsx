@@ -7,12 +7,6 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.hosnaqasmei.com'),
-  alternates: {
-    canonical: '/',
-    languages: {
-      'en-US': '/en-US',
-    },
-  },
   title: { default: 'Hosna Qasmei', template: '%s | Hosna Qasmei' },
   description: 'Developer & YouTuber',
   openGraph: {
