@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
-import { reformatDate } from '@/lib/utils';
+import { calculateReadingTime, reformatDate } from '@/lib/utils';
 
 export default function Posts({
   allPosts,
@@ -115,6 +115,13 @@ export default function Posts({
                                 notation: 'compact',
                               }).format(views[post.slug])}{' '}
                               {' views'}
+                            </span>
+                          </span>
+                          <span className="h-1 w-1 bg-secondaryDarker rounded-full" />
+                          <span>
+                            <span>
+                              {calculateReadingTime(post.content)}
+                              {' min read'}
                             </span>
                           </span>
                         </div>

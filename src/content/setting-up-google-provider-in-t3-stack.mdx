@@ -1,0 +1,227 @@
+---
+title: 'Setting up the Google Provider in T3 Stack'
+publishedAt: '2023-04-07'
+summary: ''
+slug: 'setting-up-google-provider-in-t3-stack'
+featured: 'false'
+tag: 'technical'
+---
+
+The T3 stack is a web development stack made up of Next.js, TypeScript and Tailwind CSS, created by Theo Browne. You can optionally add tRPC, Prisma or NextAuth as well to the stack. In this post, I will walk through how to implement the Google Provider with NextAuth in the T3 stack, to provide easy authentication.
+
+## Step 1: Create a T3 Stack app
+
+The first step in implementing the Google provider in the T3 stack is to have a T3 stack app, documentation can be found [here](https://create.t3.gg/en/installation).
+
+Open a terminal and run one of the commands below.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x0x54algteelvzwe4e36.png)
+
+For this example, I will be using the npm command and using the below settings.
+
+1. Name the project.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qi8ybrcxp7kwflnu8az3.png)
+
+2. Choose TypeScript.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/p883sq2q82zd23woo781.png)
+
+3. Add all optional packages.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ginc1e7vp6a7abg1u9o6.png)
+
+4. Initialize git repository by pressing `Y`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/uxj7nhitxicg7x40pelu.png)
+
+5. Run `npm install` by pressing `Y`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3hypplzmc8wp2a9ue8ky.png)
+
+6. Press `Enter`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gq3etb5c6erfeonu0g9a.png)
+
+Successfully Created Our Project!
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hkpm4x1wwb1azi1t7zg0.png)
+
+## Step 2: Create a Google Cloud Platform Project
+
+Before you can use the Google Provider in T3 stack, you need to create a Google Cloud Platform project.
+
+1. To create a new project, go to the [Google Cloud Console](https://cloud.google.com/cloud-console).
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8qrx9xw7a87ug4w5cwah.png)
+
+2. Click on the "Create Project" button.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ou1yr6s5enmub4a4g0gd.png)
+
+3. Give your project a name and click on the "Create" button.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/39thgljan7658xoyr2lk.png)
+
+4. Select the project you just created.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4003uxfp18ljr2ud8j17.png)
+
+## Step 3: Creating our Google Client ID and Client Secret
+
+1. Open the drawer and go to `API & Services`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0xx7v0zxapi8z9gxlqi2.png)
+
+2. Then select `OAuth consent screen` tab, select `External` and press `Create`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/a4jwz5ju789mgtug7st1.png)
+
+3. Complete the app registration, add the required information and keep everything else in the default settings.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bzv5mjb551itcxx4aarz.png)
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/a9oygylkmg7yxdthv1x9.png)
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/453osl0pjl0rcerbdyqu.png)
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3006wj8ojkvlt6uw727a.png)
+
+4. After completing the app registration, go to `Credentials` and select `Create Credentials` and choose `OAuth client ID`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bh3f4w2tgsct9emnygsj.png)
+
+5. Create an OAuth client ID, for the application type select `Web application`, name your project and make sure to add the uri's below. If your localhost is on a different port, make sure to use that port instead of 3000.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5ktmzgnnlmo9uy29mse9.png)
+
+6. Lastly, a Client ID and Client Secret will be created, make sure to copy that somewhere safe because we will be including that in our .env file in the next section.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ll0ycejl7cny15gpecx2.png)
+
+## Step 4: Configure the Google Provider in T3 Stack
+
+Now that we have our Google Client ID and Client Secret. We need to include them in our `.env` file. <mark>\*\*\*Make sure the NEXTAUTH_URL is using the same localhost port you initialized above in the Google Cloud Platform.</mark>
+
+```plaintext
+DATABASE_URL="file:./db.sqlite"
+NEXTAUTH_SECRET="adfadfadglkjoiujoiujoij"
+NEXTAUTH_URL="http://localhost:3000"
+
+# Next Auth Google Provider
+GOOGLE_CLIENT_ID="our_client_id_we_just_generated"
+GOOGLE_CLIENT_SECRET="our_client_secret_we_just_generated"
+```
+
+Then we need to update the sections of our `env.mjs` file, we will be replacing anywhere that has DISCORD_CLIENT_ID or DISCORD_CLIENT_SECRET with GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET.
+
+```plaintext
+const server = z.object({
+  DATABASE_URL: z.string().url(),
+  NODE_ENV: z.enum(["development", "test", "production"]),
+  ...
+
+  // ADDED HERE
+  GOOGLE_CLIENT_ID: z.string(),
+  GOOGLE_CLIENT_SECRET: z.string(),
+});
+```
+
+```plaintext
+const processEnv = {
+  DATABASE_URL: process.env.DATABASE_URL,
+  NODE_ENV: process.env.NODE_ENV,
+  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+
+  // ADDED HERE
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+};
+```
+
+In the `/src/server/auth.ts` file, the default T3 stack uses the Discord Provider.  
+We will replace it with the Google Provider.
+
+```plaintext
+import GoogleProvider from "next-auth/providers/google";
+
+...
+
+export const authOptions: NextAuthOptions = {
+  callbacks: {
+    session({ session, user }) {
+      if (session.user) {
+        session.user.id = user.id;
+        // session.user.role = user.role; <-- put other properties on the session here
+      }
+      return session;
+    },
+  },
+  adapter: PrismaAdapter(prisma),
+  providers: [
+
+    // ADDED HERE
+    GoogleProvider({
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
+};
+```
+
+## Step 5: Setting up our PostgreSQL Database
+
+We need a place to store our user information and sessions. I use [Railway](https://railway.app/) to create my postgresql database. I press `Start a New Project`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4170fc2btsqmh42hy6fv.png)
+
+I select `Provision PostgreSQL`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nj9gbgjmm6v58m2la824.png)
+
+Then copy the `DATABASE_URL` to then be used inside our `.env` file.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/97hzn77lz2jui3cwf3cc.png)
+
+We have finished setting up our database!
+
+## Step 6: Using Prisma to push our Schema to our Database
+
+At the moment our database is empty. We need to push our default schema up by opening up a terminal and running the command below.
+
+```bash
+npx prisma db push
+```
+
+That should then populate our database with the necessary tables and parameters.
+
+## Step 7: Final Step
+
+Now we can run our project and see if we can sign in using the Google Provider. Make sure you are INSIDE the project directory, run the `npm run dev` command in the terminal and open a browser and navigate to `http://localhost:3000`. The screen below should show up. Click on `Sign in`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/w94sj9wy3q0pas5dlitw.png)
+
+It should then navigate you here. Click on the `Sign in with Google` button.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/saa8d7dcobyv3a5do720.png)
+
+Then it will take you through Google's authentication.
+
+Sign in using a different gmail account than the one you used to create the
+Client ID and Client Secret. Or else it will give you the screen below and
+will not let you in.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9cpt9fdzm379eev2pywd.png)
+
+If it worked, then it should navigate you here.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/icuk0djj78va323z7n36.png)
+
+And once you are logged in your screen should look something like this.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3dr1my5n37n82cs4mghn.png)
+
+## Conclusion
+
+Hopefully, if you have reached this point you were able to successfully add the Google Provider to your T3 Stack. And now you can build awesome web applications! If you have any questions or get stuck feel free to message me on Twitter.

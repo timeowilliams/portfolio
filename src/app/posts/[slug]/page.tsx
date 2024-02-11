@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { CustomMDX } from '@/components/mdx';
 import { getPosts } from '@/lib/posts';
-import { reformatDate } from '@/lib/utils';
+import { calculateReadingTime, reformatDate } from '@/lib/utils';
 import { Redis } from '@upstash/redis';
 
 import { ReportView } from './view';
@@ -94,6 +94,13 @@ export default async function Blog({ params }: { params: any }) {
                 views,
               )}{' '}
               {' views'}
+            </span>
+          </span>
+          <span className="h-1 w-1 bg-secondaryDarker rounded-full" />
+          <span>
+            <span>
+             {calculateReadingTime(post.content)}
+              {' min read'}
             </span>
           </span>
         </div>

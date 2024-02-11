@@ -4,7 +4,7 @@ import Link from 'next/link';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { CONFIG } from '@/config';
 import { getPosts } from '@/lib/posts';
-import { reformatDate } from '@/lib/utils';
+import { calculateReadingTime, reformatDate } from '@/lib/utils';
 import { Redis } from '@upstash/redis';
 
 const redis = Redis.fromEnv();
@@ -248,6 +248,13 @@ export default async function Home() {
                               notation: 'compact',
                             }).format(views[post.slug])}{' '}
                             {' views'}
+                          </span>
+                        </span>
+                        <span className="h-1 w-1 bg-secondaryDarker rounded-full" />
+                        <span>
+                          <span>
+                            {calculateReadingTime(post.content)}
+                            {' min read'}
                           </span>
                         </span>
                       </div>
