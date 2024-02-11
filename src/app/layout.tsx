@@ -60,6 +60,10 @@ export default function RootLayout({
           data-token="a07e2826-5910-4684-9e69-0ec4388a0509"
           async
         ></script>
+        <meta
+          name="twitter:image"
+          content="https://www.hosnaqasmei.com/opengraph-image.jpg?d69767cd956a7bc0"
+        />
       </head>
       <body
         className={`bg-primary text-secondary text-sm md:text-base ${inter.className}`}
