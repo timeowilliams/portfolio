@@ -5,7 +5,5 @@ export default function robots() {
         userAgent: '*',
       },
     ],
-    sitemap: 'https://hosnaqasmei.com//sitemap.xml',
-    host: 'https://hosnaqasmei.com/',
   };
 }

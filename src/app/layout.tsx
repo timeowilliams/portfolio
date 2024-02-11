@@ -6,13 +6,13 @@ import '../styles/globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.hosnaqasmei.com'),
+  metadataBase: new URL('https://www.hosnaqasmei.com/'),
   title: { default: 'Hosna Qasmei', template: '%s | Hosna Qasmei' },
   description: 'Developer & YouTuber',
   openGraph: {
     title: 'Hosna Qasmei',
     description: 'Developer & YouTuber.',
-    url: 'https://www.hosnaqasmei.com',
+    url: 'https://www.hosnaqasmei.com/',
     siteName: 'Hosna Qasmei',
     locale: 'en_US',
     type: 'website',
