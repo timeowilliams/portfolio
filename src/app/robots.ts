@@ -1,14 +1,11 @@
-import { MetadataRoute } from 'next';
-
-export default function robots(): MetadataRoute.Robots {
+export default function robots() {
   return {
     rules: [
       {
-        userAgent: '*', // Excluded all crawlers
-        allow: '/',
-        disallow: ['/admin', '/privacy'],
+        userAgent: '*',
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`,
+    sitemap: 'https://hosnaqasmei.com//sitemap.xml',
+    host: 'https://hosnaqasmei.com/',
   };
 }

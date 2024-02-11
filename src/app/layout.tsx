@@ -22,7 +22,17 @@ export const metadata: Metadata = {
     siteName: 'Hosna Qasmei',
     locale: 'en_US',
     type: 'website',
-    images: '/og-image.png',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   twitter: {
     title: 'Hosna Qasmei',
