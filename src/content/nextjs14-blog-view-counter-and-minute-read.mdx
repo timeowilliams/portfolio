@@ -9,7 +9,7 @@ tag: 'technical'
 
 <Image
   alt={`Example of View Counter and Minute Read`}
-  src={`https://res.cloudinary.com/duud9d8dv/image/upload/v1707717256/portfolio/Group_6_vhqwsv.png`}
+  src={`https://res.cloudinary.com/duud9d8dv/image/upload/v1707780778/portfolio/Screenshot_2024-02-12_at_3.32.17_PM_za8zwk.png`}
   width={2812 / 2}
   height={2140 / 2}
   priority
@@ -28,7 +28,19 @@ This was inspired by [Andreas' blog post](https://upstash.com/blog/nextjs13-appr
 
 ## Setting up our Next.js 14 project
 
-All you need to add is this package
+You can find the starter and final code [here](https://github.com/hqasmei/nextjs14-blog).
+
+<a href="https://github.com/hqasmei/nextjs14-blog" target="_blank">
+  <Image
+    alt={`Github repo og image`}
+    src={`https://res.cloudinary.com/duud9d8dv/image/upload/v1707781017/portfolio/nextjs14-blog_be8yqx.png`}
+    width={2812 / 2}
+    height={2140 / 2}
+    priority
+  />
+</a>
+
+If you already have a repository that you are trying to add the view counter to, you can add the package below with your desired package manager.
 
 ```bash title="Terminal"
 npm i add @upstash/redis
@@ -78,6 +90,125 @@ When the database is finished being created, scroll down in the project dashboar
   priority
 />
 
-## Add View Counter
+## Folder Structure
+
+```bash title="Terminal"
+├── src
+|   ├── app
+|   |   ├── api
+|   |   |   ├── increment
+|   |   |   |   |   ├── route.ts
+|   |   ├── posts
+|   |   |   ├── [slug]
+|   |   |   |   |   ├── page.tsx
+|   |   |   |   |   ├── view.tsx
+|   |   |   |   ├── page.tsx
+|   |   |   |   ├── posts.tsx
+|   |   |   ├── favicon.ico
+|   |   |   ├── layout.tsx
+|   |   |   ├── page.tsx
+...
+```
+
+## View Counter
+
+There are two things we want to do, (1) see how many views a blog post has and (2) increment the view each time someone visits the page.
+
+### Viewing
+
+Here is a high level diagram drawn with [eraser.io](https://eraser.io/). This shows the src/app/posts/page.tsx and how it fetches the views for each post.
+
+<Image
+  alt={`Fetch view count`}
+  src={`https://res.cloudinary.com/duud9d8dv/image/upload/v1707783103/portfolio/nextjs14-blog-view-counter-and-minute-read-1_gavr5z.png`}
+  width={2812 / 2}
+  height={2140 / 2}
+  priority
+/>
+
+And here is the code.
+
+```javascript
+import React from 'react';
+
+import { getPosts } from '@/lib/posts';
+import { Redis } from '@upstash/redis';
+
+import Posts from './posts';
+
+const redis = Redis.fromEnv();
+export const revalidate = 0;
+
+export const metadata = {
+  title: 'Posts',
+  description: '',
+};
+
+export default async function PostsPage() {
+  let allPosts = getPosts();
+  const views = (
+    await redis.mget<number[]>(
+      ...allPosts.map((p) => ['pageviews', 'posts', p.slug].join(':')),
+    )
+  ).reduce(
+    (acc, v, i) => {
+      acc[allPosts[i].slug] = v ?? 0;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
+  return <Posts allPosts={allPosts} views={views} />;
+}
+```
+
+We are going through each post in allPosts, fetching the value from the Upstash Redis database and inputting it into our Posts component.
+
+The same method is used for the src/app/posts/[slug]/page.tsx. But since we have the slug for the post it makes it simplier to get the value.
+
+```javascript
+export default async function Blog({ params }: { params: any }) {
+  const post = getPosts().find((post) => post.slug === params.slug);
+
+  if (!post) {
+    notFound();
+  }
+  const views =
+    (await redis.get<number>(['pageviews', 'posts', params.slug].join(':'))) ??
+    0;
+...
+}
+```
+
+### Incrementing
+
+Here is a high level diagram drawn for incrementing. The only time we want to increment is when we visit the blog post.
+
+<Image
+  alt={`Increment view count`}
+  src={`https://res.cloudinary.com/duud9d8dv/image/upload/v1707783103/portfolio/nextjs14-blog-view-counter-and-minute-read-2_ls5g7w.png`}
+  width={2812 / 2}
+  height={2140 / 2}
+  priority
+/>
 
 ## Add Minute Read
+
+For minutes read, since we have the content of the mdx, we can pass it into a function and use a formula to determine how many minutes it would take to read.
+
+```javascript
+export function calculateReadingTime(mdxContent: any) {
+  // Define the average reading speed (words per minute)
+  const wordsPerMinute = 200;
+
+  // Strip MDX/HTML tags and count the words
+  const text = mdxContent.replace(/<\/?[^>]+(>|$)/g, ''); // Basic stripping of HTML tags
+  const wordCount = text
+    .split(/\s+/)
+    .filter((word: any) => word.length > 0).length;
+
+  // Calculate reading time
+  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+  return readingTime;
+}
+```
