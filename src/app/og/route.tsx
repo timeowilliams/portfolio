@@ -6,6 +6,10 @@ export const runtime = 'edge';
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const postTitle = searchParams.get('title');
+  const font = fetch(
+    new URL('../../../public/fonts/Inter-SemiBold.otf', import.meta.url),
+  ).then((res) => res.arrayBuffer());
+  const fontData = await font;
 
   return new ImageResponse(
     (
@@ -31,6 +35,7 @@ export async function GET(req: NextRequest) {
             color: 'white',
             lineHeight: '70px',
             whiteSpace: 'pre-wrap',
+            fontFamily: 'Inter SemiBold',
           }}
         >
           {postTitle}
@@ -40,6 +45,13 @@ export async function GET(req: NextRequest) {
     {
       width: 1200,
       height: 630,
+      fonts: [
+        {
+          name: 'Inter SemiBold',
+          data: fontData,
+          style: 'normal',
+        },
+      ],
     },
   );
 }
