@@ -1,3 +1,11 @@
+import { DiscordIcon } from '@/components/icons/discord';
+import { GithubIcon } from '@/components/icons/github';
+import { LinkedInIcon } from '@/components/icons/linkedin';
+import { XIcon } from '@/components/icons/x';
+import { YouTubeIcon } from '@/components/icons/youtube';
+
+import { TwitchIcon } from './components/icons/twitch';
+
 export const CONFIG = {
   name: 'Hosna Qasmei',
   headshot:
@@ -6,7 +14,17 @@ export const CONFIG = {
   description: `Hi, I'm Hosna, a software developer based in Los Angeles, California. 
 In addition to coding, I also make YouTube videos, sharing my knowledge 
 and experience on web & mobile development.`,
-  socials: { twitter: '', linkedin: '', discord: '' },
+  socials: [
+    { link: 'https://twitter.com/hqasmei', icon: <XIcon /> },
+    { link: 'https://github.com/hqasmei', icon: <GithubIcon /> },
+    { link: 'https://www.youtube.com/@hqasmei', icon: <YouTubeIcon /> },
+    { link: 'https://www.twitch.tv/hqasmei', icon: <TwitchIcon /> },
+    { link: 'https://discord.com/invite/agzuPEVxhT', icon: <DiscordIcon /> },
+    {
+      link: 'https://www.linkedin.com/in/hosnaqasmei/',
+      icon: <LinkedInIcon />,
+    },
+  ],
   projects: [
     {
       featured: true,

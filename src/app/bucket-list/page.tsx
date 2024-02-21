@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CheckboxWithText } from '@/components/checkbox-with-text-';
+import { CheckboxWithText } from '@/components/checkbox-with-text';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { CONFIG } from '@/config';
 
