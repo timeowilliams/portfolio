@@ -111,7 +111,8 @@ There are two types of file structure when it comes to using SST in a project, D
 
 In drop-in mode, SST can be used as part of your frontend app. For example, if you run npm create sst inside a Next.js app, it'll drop a sst.config.ts in your project. This is great if you have a simple Next.js app and you just want to deploy it to AWS with SST. The directory structure in drop-in mode might look like this:
 
-```
+<CodeBlock title="Folder Structure">
+```txt
 my-nextjs-app
 ├─ next.config.js
 ├─ sst.config.ts
@@ -120,12 +121,14 @@ my-nextjs-app
 ├─ styles
 └─ pages
 ```
+</CodeBlock>
 
 ### Monorepo
 
 A monorepo setup is recommended as it's the best way to manage a growing project with interconnected parts like the backend, frontend, and infrastructure. In this structure, you can add your frontend to the packages/web/ directory, packages/functions/ are for backend functions, packages/core/ is for any shared business logic, and stacks/ has your infrastructure definitions. The directory structure in monorepo mode might look like this:
 
-```
+<CodeBlock title="Folder Structure">
+```txt
 my-sst-app
 ├─ package.json
 ├─ sst.config.ts
@@ -137,3 +140,4 @@ my-sst-app
 │  └─ web
 └─ stacks
 ```
+</CodeBlock>

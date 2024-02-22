@@ -65,7 +65,7 @@ export default async function Blog({ params }: { params: any }) {
     0;
 
   return (
-    <MaxWidthWrapper>
+    <div>
       <ReportView slug={post.slug} />
       <div className="flex flex-row space-x-4 mb-6 text-sm text-secondaryDarker">
         <Link
@@ -99,7 +99,7 @@ export default async function Blog({ params }: { params: any }) {
           <span className="h-1 w-1 bg-secondaryDarker rounded-full" />
           <span>
             <span>
-             {calculateReadingTime(post.content)}
+              {calculateReadingTime(post.content)}
               {' min read'}
             </span>
           </span>
@@ -108,6 +108,6 @@ export default async function Blog({ params }: { params: any }) {
       <article className="prose prose-invert pb-10">
         <CustomMDX source={post.content} />
       </article>
-    </MaxWidthWrapper>
+    </div>
   );
 }

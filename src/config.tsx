@@ -10,9 +10,8 @@ export const CONFIG = {
   name: 'Hosna Qasmei',
   headshot:
     'https://res.cloudinary.com/duud9d8dv/image/upload/v1696801306/headshot_mlyfwz.jpg',
-  title: 'Developer & Youtuber',
-  description: `Hi, I'm Hosna, a software developer based in Los Angeles, California. 
-In addition to coding, I also make YouTube videos, sharing my knowledge 
+  title: 'Software Developer',
+  description: `Hi, I'm Hosna. I'm based in Los Angeles, California. In addition to coding, I also make YouTube videos, sharing my knowledge 
 and experience on web & mobile development.`,
   socials: [
     { link: 'https://twitter.com/hqasmei', icon: <XIcon /> },

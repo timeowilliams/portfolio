@@ -13,20 +13,22 @@ TypeScript is a popular statically-typed language that offers many benefits to d
 
 A type in TypeScript is used to describe the shape of a value. It defines a set of rules that the value must follow. Types can be created using the 'type' keyword, followed by a name and a type definition. For example, let's say we want to create a type for a user:
 
- 
-```
+<CodeBlock title="Example">
+```txt 
 type User = {
   name: string;
   age: number;
   email: string;
 }
 ```
+</CodeBlock>
 
 This type defines a user object that must have a 'name', 'age', and 'email' property. If we try to create a user object that does not match this type, TypeScript will throw a type error.
 
 Types in TypeScript are appropriate to use when you need to define a simple type alias or a union type. Type aliases can be used to simplify complex types and make them more readable. For example, if you have a complex type with a long name, you can create a type alias to make it easier to use:
 
-```
+<CodeBlock title="Example">
+```txt
 type MyComplexType = {
   prop1: string;
   prop2: number;
@@ -34,11 +36,14 @@ type MyComplexType = {
   // ...and so on
 }
 ```
+</CodeBlock>
 You can then use this type alias instead of the original complex type throughout your code. Type aliases are also useful when you want to create a union type, which is a type that can have one of several different types. For example:
 
-```
+<CodeBlock title="Example">
+```txt
 type MyUnionType = string | number;
 ```
+</CodeBlock>
 
 This type definition means that the variable of type 'MyUnionType' can either be a string or a number.
 
@@ -48,25 +53,30 @@ In general, types are useful when you need to define a simple type or a union ty
 
 An interface in TypeScript is also used to define the shape of a value. However, unlike types, interfaces can be extended and implemented. Interfaces are created using the 'interface' keyword, followed by a name and a type definition. Let's modify our previous example to use an interface instead:
 
-```
+<CodeBlock title="Example">
+```txt
 interface User {
   name: string;
   age: number;
   email: string;
 }
 ```
+</CodeBlock>
 
 This interface defines the same user object as our previous type. However, we can now extend this interface to add more properties. For example, let's say we want to add a 'phone' property to our user interface:
 
-```
+<CodeBlock title="Example">
+```txt
 interface UserWithPhone extends User {
   phone: string;
 }
 ```
+</CodeBlock>
 
 This interface now defines a user object that must have a 'name', 'age', 'email', and 'phone' property. We can also implement this interface on a class:
 
-```
+<CodeBlock title="Example">
+```txt
 class UserClass implements UserWithPhone {
   name: string;
   age: number;
@@ -80,6 +90,7 @@ class UserClass implements UserWithPhone {
   }
 }
 ```
+</CodeBlock>
 
 This class implements our UserWithPhone interface, which means it must have all of the properties defined in the interface.
 

@@ -1,16 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { CONFIG } from '@/config';
 import { getPosts } from '@/lib/posts';
 import { calculateReadingTime, reformatDate } from '@/lib/utils';
 import { Redis } from '@upstash/redis';
 
+import Header from './header';
+
 const redis = Redis.fromEnv();
 export const revalidate = 0;
-
-const socialBorder = `border group hover:border-secondaryDarker duration-200 rounded px-1.5 py-1 border-neutral-800 items-center flex`;
 
 export default async function Home() {
   let allPosts = getPosts();
@@ -26,47 +25,21 @@ export default async function Home() {
     {} as Record<string, number>,
   );
   return (
-    <MaxWidthWrapper>
+    <>
+      <Header />
       <div className="flex flex-col space-y-6 md:space-y-10 pb-10">
-        <div className="flex flex-col space-y-6 md:space-y-10 md:px-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-            <div className="flex flex-row items-center space-x-3">
-              <Image
-                src={CONFIG.headshot}
-                alt=""
-                width={100}
-                height={100}
-                className="rounded-full h-[48px] w-[48px]"
-              />
-              <div className="flex flex-col">
-                <span className="font-semibold">{CONFIG.name}</span>
-                <span className="text-secondaryDarker">{CONFIG.title}</span>
-              </div>
-            </div>
-            <div className="flex flex-row space-x-2">
-              {CONFIG.socials.map((social, idx) => {
-                return (
-                  <a
-                    key={idx}
-                    href={social.link}
-                    target="_blank"
-                    className={`${socialBorder}`}
-                  >
-                    {social.icon}
-                  </a>
-                );
-              })}
-            </div>
+        <div className="flex flex-col  md:px-6">
+          <div className="flex flex-col space-y-2">
+            <span className="font-semibold">About me</span>
+            <span className="text-secondaryDark leading-6">
+              {CONFIG.description}
+            </span>
           </div>
-
-          <span className="text-secondaryDark leading-6">
-            {CONFIG.description}
-          </span>
         </div>
 
-        <div className="flex flex-col space-y-10">
+        <div className="flex flex-col space-y-6">
           {/* Projects */}
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-2">
             <span className="font-semibold md:px-6">Featured Projects</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {CONFIG.projects.map((project, idx) => {
@@ -136,7 +109,7 @@ export default async function Home() {
           </div>
 
           {/* Posts */}
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-2">
             <span className="font-semibold md:px-6">Recent Posts</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {allPosts
@@ -221,7 +194,7 @@ export default async function Home() {
           </div>
 
           {/* Reads */}
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-2">
             <span className="font-semibold md:px-6">Recent Reads</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {CONFIG.reading
@@ -296,6 +269,6 @@ export default async function Home() {
           </div>
         </div>
       </div>
-    </MaxWidthWrapper>
+    </>
   );
 }
