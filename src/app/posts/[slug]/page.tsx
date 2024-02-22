@@ -65,7 +65,7 @@ export default async function Blog({ params }: { params: any }) {
     0;
 
   return (
-    <div>
+    <div className='w-full'>
       <ReportView slug={post.slug} />
       <div className="flex flex-row space-x-4 mb-6 text-sm text-secondaryDarker">
         <Link
