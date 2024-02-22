@@ -1,10 +1,20 @@
-import React, { createElement } from 'react';
+import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { postProcess, preProcess } from '@/lib/rehype-pre-raw';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { highlight } from 'sugar-high';
+import rehypePrism from 'rehype-prism-plus';
+
+import { CopyButton } from './copy-button';
+
+const options = {
+  mdxOptions: {
+    remarkPlugins: [],
+    rehypePlugins: [preProcess, rehypePrism, postProcess],
+  },
+};
 
 function Table({ data }: { data: any }) {
   let headers = data.headers.map((header: any, index: any) => (
@@ -59,52 +69,25 @@ function Callout(props: any) {
   );
 }
 
-function Code({ children, ...props }: { children: any }) {
-  let codeHTML = highlight(children);
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
-}
+function CodeBlock({ children, ...props }: { children: any; title: string }) {
+  return (
+    <>
+      <div className="rounded-t-md px-4 py-2 bg-black text-sm border-neutral-700 border-x-[1px] border-t-[1px] text-secondaryDarker flex flex-row justify-between items-center">
+        <div>{props.title}</div>
 
-function slugify(str: any) {
-  return str
-    .toString()
-    .toLowerCase()
-    .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
-    .replace(/\-\-+/g, '-'); // Replace multiple - with single -
+        <CopyButton text={children.props.raw} />
+      </div>
+      {children}
+    </>
+  );
 }
-
-// function createHeading(level: any) {
-//   return ({ children }: { children: any }) => {
-//     let slug = slugify(children);
-//     return React.createElement(
-//       `h${level}`,
-//       { id: slug },
-//       [
-//         React.createElement('a', {
-//           href: `#${slug}`,
-//           key: `link-${slug}`,
-//           className: 'anchor',
-//         }),
-//       ],
-//       children,
-//     );
-//   };
-// }
 
 let components = {
-  // h1: createHeading(1),
-  // h2: createHeading(2),
-  // h3: createHeading(3),
-  // h4: createHeading(4),
-  // h5: createHeading(5),
-  // h6: createHeading(6),
   Image: RoundedImage,
   a: CustomLink,
   Callout,
-  code: Code,
   Table,
+  CodeBlock,
 };
 
 export function CustomMDX(props: any) {
@@ -112,6 +95,7 @@ export function CustomMDX(props: any) {
     <MDXRemote
       {...props}
       components={{ ...components, ...(props.components || {}) }}
+      options={options}
     />
   );
 }
