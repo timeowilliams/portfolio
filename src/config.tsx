@@ -1,10 +1,9 @@
 import { DiscordIcon } from '@/components/icons/discord';
 import { GithubIcon } from '@/components/icons/github';
 import { LinkedInIcon } from '@/components/icons/linkedin';
+import { TwitchIcon } from '@/components/icons/twitch';
 import { XIcon } from '@/components/icons/x';
 import { YouTubeIcon } from '@/components/icons/youtube';
-
-import { TwitchIcon } from './components/icons/twitch';
 
 export const CONFIG = {
   name: 'Hosna Qasmei',
@@ -14,12 +13,29 @@ export const CONFIG = {
   description: `Hi, I'm Hosna. I'm based in Los Angeles, California. In addition to coding, I also make YouTube videos, sharing my knowledge 
 and experience on web & mobile development.`,
   socials: [
-    { link: 'https://twitter.com/hqasmei', icon: <XIcon /> },
-    { link: 'https://github.com/hqasmei', icon: <GithubIcon /> },
-    { link: 'https://www.youtube.com/@hqasmei', icon: <YouTubeIcon /> },
-    { link: 'https://www.twitch.tv/hqasmei', icon: <TwitchIcon /> },
-    { link: 'https://discord.com/invite/agzuPEVxhT', icon: <DiscordIcon /> },
+    { platform: 'X', link: 'https://twitter.com/hqasmei', icon: <XIcon /> },
     {
+      platform: 'GitHub',
+      link: 'https://github.com/hqasmei',
+      icon: <GithubIcon />,
+    },
+    {
+      platform: 'YouTube',
+      link: 'https://www.youtube.com/@hqasmei',
+      icon: <YouTubeIcon />,
+    },
+    {
+      platform: 'Twitch',
+      link: 'https://www.twitch.tv/hqasmei',
+      icon: <TwitchIcon />,
+    },
+    {
+      platform: 'Discord',
+      link: 'https://discord.com/invite/agzuPEVxhT',
+      icon: <DiscordIcon />,
+    },
+    {
+      platform: 'LinkedIn',
       link: 'https://www.linkedin.com/in/hosnaqasmei/',
       icon: <LinkedInIcon />,
     },

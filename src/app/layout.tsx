@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 
 import '../styles/globals.css';
 
+import { ContextProvider } from '@/components/context-provider';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 
 import Header from './header';
@@ -68,13 +69,15 @@ export default function RootLayout({
       <body
         className={`bg-primary text-secondary text-sm md:text-base ${inter.className}`}
       >
-        <main className="min-h-screen flex flex-col items-center">
-          <MaxWidthWrapper>
-            <div className="flex-1 w-full flex flex-col gap-8 items-center">
-              {children}
-            </div>
-          </MaxWidthWrapper>
-        </main>
+        <ContextProvider>
+          <main className="min-h-screen flex flex-col items-center">
+            <MaxWidthWrapper>
+              <div className="flex-1 w-full flex flex-col gap-8 items-center">
+                {children}
+              </div>
+            </MaxWidthWrapper>
+          </main>
+        </ContextProvider>
       </body>
     </html>
   );

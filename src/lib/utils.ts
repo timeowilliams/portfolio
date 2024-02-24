@@ -1,3 +1,5 @@
+import { CONFIG } from '@/config';
+
 export function reformatDate(dateStr: string) {
   // Split the input date string to get year, month, and day
   const parts = dateStr.split('-').map((part) => parseInt(part, 10));
@@ -31,4 +33,27 @@ export function calculateReadingTime(mdxContent: any) {
   const readingTime = Math.ceil(wordCount / wordsPerMinute);
 
   return readingTime;
+}
+
+export function findMostRecentEntryByPlatform(platformName: string, data: any) {
+  // Filter entries by platformName
+  const filteredEntries = data.filter(
+    (entry: any) => entry.platformName === platformName,
+  );
+
+  const getSocialData = CONFIG.socials.filter(
+    (entry: any) => entry.platform === platformName,
+  );
+
+  // Sort by _creationTime in descending order (most recent first)
+  const sortedEntries = filteredEntries.sort(
+    (a: any, b: any) => b._creationTime - a._creationTime,
+  );
+
+  let temp = sortedEntries[0];
+  temp['icon'] = getSocialData[0].icon;
+  temp['link'] = getSocialData[0].link;
+
+  // Return the most recent entry, or null if no entries are found
+  return temp;
 }
