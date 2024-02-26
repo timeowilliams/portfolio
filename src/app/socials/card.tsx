@@ -26,7 +26,9 @@ export default function Card({
         <span>{type}</span>
       </div>
 
-      <span className="text-3xl font-semibold text-secondaryDark">{followersCount}</span>
+      <span className="text-3xl font-semibold text-secondaryDark">
+        {followersCount}
+      </span>
     </Link>
   );
 }

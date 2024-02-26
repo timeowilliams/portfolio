@@ -5,6 +5,10 @@ import { TwitchIcon } from '@/components/icons/twitch';
 import { XIcon } from '@/components/icons/x';
 import { YouTubeIcon } from '@/components/icons/youtube';
 
+
+
+
+
 export const CONFIG = {
   name: 'Hosna Qasmei',
   headshot:
@@ -105,6 +109,13 @@ and experience on web & mobile development.`,
     },
   ],
   reading: [
+    {
+      title: 'Cantoras',
+      author: 'Carolina De Robertis',
+      link: 'https://www.amazon.com/Cantoras-novel-Carolina-Robertis/dp/0525521690',
+      rating: 4,
+      dateFinished: '2024-02-26',
+    },
     {
       title: 'The Defining Decade',
       author: 'Meg Jay',
@@ -305,7 +316,7 @@ and experience on web & mobile development.`,
       title: 'The Last Black Unicorn',
       author: 'Tiffany Haddish',
       dateFinished: '2022-06-05',
-      rating: 4,
+      rating: 3,
       link: 'https://www.amazon.com/Last-Black-Unicorn-Tiffany-Haddish/dp/1501181831/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1696829091&sr=1-1',
     },
     {
