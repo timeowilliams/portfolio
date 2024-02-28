@@ -46,11 +46,11 @@ export default function SocialAnalyticsPage() {
           <span className="text-secondaryDarker">Back</span>
         </Link>
         <span className="text-4xl font-bold  mb-6">Social Media Stats</span>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2   gap-4 w-full">
           <Card {...xData} type="Followers" />
           <Card {...githubData} type="Followers" />
           <Card {...youtubeData} type="Subscribers" />
-          <Card {...twitchData} type="Followers" />
+          {/* <Card {...twitchData} type="Followers" /> */}
           <Card {...discordData} type="Members" />
           <Card {...linkedinData} type="Followers" />
         </div>

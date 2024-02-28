@@ -1,20 +1,34 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Link from 'next/link';
+
+import { transformData } from '@/lib/utils';
+import { AreaChart } from '@tremor/react';
+
+const error = console.error;
+console.error = (...args: any) => {
+  if (/defaultProps/.test(args[0])) return;
+  error(...args);
+};
 
 export default function Card({
   icon,
   link,
   type,
   followersCount,
+  rawData,
 }: {
   icon: any;
   link: string;
   type: string;
   followersCount: string;
+  rawData: any;
 }) {
+  const valueFormatter = (number: any) =>
+    `${Intl.NumberFormat('us').format(number).toString()}`;
+  const transformedData = transformData(rawData); 
   return (
     <Link
       href={link}
@@ -29,6 +43,20 @@ export default function Card({
       <span className="text-3xl font-semibold text-secondaryDark">
         {followersCount}
       </span>
+      <AreaChart
+        data={transformedData}
+        index="date"
+        categories={['followers']}
+        colors={['blue']}
+        valueFormatter={valueFormatter}
+        showLegend={false}
+        showYAxis={false}
+        showGradient={false}
+        startEndOnly={true}
+        autoMinValue={true}
+        tickGap={1}
+        className="mt-6 h-32"
+      />
     </Link>
   );
 }
