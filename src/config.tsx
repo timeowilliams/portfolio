@@ -49,7 +49,8 @@ and experience on web & mobile development.`,
       featured: true,
       name: 'ProjectPlannerAI',
       slug: 'project-planner-ai',
-      description: 'Turn your idea into a plan with 1 click. ',
+      description:
+        'Manage your side projects in one place.',
       image:
         'https://res.cloudinary.com/duud9d8dv/image/upload/v1704691486/project-planner-ai_imlf93.png',
       link: 'https://projectplannerai.com/',
