@@ -22,6 +22,33 @@ export default function SocialAnalyticsPage() {
   const discordData = findMostRecentEntryByPlatform('Discord', socials);
   const linkedinData = findMostRecentEntryByPlatform('LinkedIn', socials);
 
+  const dataWithType = [
+    { data: xData, type: 'Followers' },
+    { data: githubData, type: 'Followers' },
+    { data: youtubeData, type: 'Subscribers' },
+    { data: twitchData, type: 'Followers' },
+    { data: discordData, type: 'Members' },
+    { data: linkedinData, type: 'Followers' },
+  ];
+
+  const sortedData = dataWithType.sort((a, b) => {
+    const lastA = parseInt(
+      a.data.rawData[a.data.rawData.length - 1]?.followersCount.replace(
+        /,/g,
+        '',
+      ) || '0',
+      10,
+    );
+    const lastB = parseInt(
+      b.data.rawData[a.data.rawData.length - 1]?.followersCount.replace(
+        /,/g,
+        '',
+      ) || '0',
+      10,
+    );
+    return lastB - lastA;
+  });
+
   return (
     <div className="grid grid-cols-1 gap-10 pb-10 w-full">
       <div className="flex flex-col">
@@ -46,13 +73,10 @@ export default function SocialAnalyticsPage() {
           <span className="text-secondaryDarker">Back</span>
         </Link>
         <span className="text-4xl font-bold  mb-6">Social Media Stats</span>
-        <div className="grid grid-cols-1 sm:grid-cols-2   gap-4 w-full">
-          <Card {...xData} type="Followers" />
-          <Card {...githubData} type="Followers" />
-          <Card {...youtubeData} type="Subscribers" />
-          {/* <Card {...twitchData} type="Followers" /> */}
-          <Card {...discordData} type="Members" />
-          <Card {...linkedinData} type="Followers" />
+        <div className="grid grid-cols-1 gap-4 w-full">
+          {sortedData.map(({ data, type }, idx) => (
+            <Card key={idx} {...data} type={type} />
+          ))}
         </div>
       </div>
     </div>
