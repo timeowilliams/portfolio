@@ -5,10 +5,6 @@ import { TwitchIcon } from '@/components/icons/twitch';
 import { XIcon } from '@/components/icons/x';
 import { YouTubeIcon } from '@/components/icons/youtube';
 
-
-
-
-
 export const CONFIG = {
   name: 'Hosna Qasmei',
   headshot:
@@ -49,8 +45,7 @@ and experience on web & mobile development.`,
       featured: true,
       name: 'ProjectPlannerAI',
       slug: 'project-planner-ai',
-      description:
-        'Manage your side projects in one place.',
+      description: 'Manage your side projects in one place.',
       image:
         'https://res.cloudinary.com/duud9d8dv/image/upload/v1704691486/project-planner-ai_imlf93.png',
       link: 'https://projectplannerai.com/',
@@ -110,6 +105,13 @@ and experience on web & mobile development.`,
     },
   ],
   reading: [
+    {
+      title: 'On Writing Well',
+      author: 'William Zinsser',
+      link: 'https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548',
+      rating: 5,
+      dateFinished: '2024-03-07',
+    },
     {
       title: 'Cantoras',
       author: 'Carolina De Robertis',
