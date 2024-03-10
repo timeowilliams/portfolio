@@ -48,7 +48,7 @@ export default function Posts({
         <span className="text-4xl font-bold md:px-6 mb-6 md:mb-4">
           All Posts
         </span>
-        <div className="flex flex-row space-x-4 mb-6 md:mb-4 text-sm  md:px-6">
+        <div className="flex flex-row space-x-4 mb-6 md:mb-4 text-sm  md:px-6 overflow-x-auto line-clamp-1 text-nowrap">
           <Link
             href="/posts"
             className={`${tag === null ? 'text-secondaryDark underline' : 'text-secondaryDarker'} hover:text-secondaryDark duration-200 hover:underline`}
@@ -61,12 +61,12 @@ export default function Posts({
           >
             Technical
           </Link>
-          <Link
+          {/* <Link
             href="/posts?tag=marketing"
             className={`${tag === 'marketing' ? 'text-secondaryDark underline' : 'text-secondaryDarker'} hover:text-secondaryDark duration-200 hover:underline`}
           >
             Marketing
-          </Link>
+          </Link> */}
           <Link
             href="/posts?tag=personal"
             className={`${tag === 'personal' ? 'text-secondaryDark underline' : 'text-secondaryDarker'} hover:text-secondaryDark duration-200 hover:underline`}
@@ -75,7 +75,7 @@ export default function Posts({
           </Link>
           <Link
             href="/posts?tag=book-notes"
-            className={`${tag === 'book-notes' ? 'text-secondaryDark underline' : 'text-secondaryDarker'} hover:text-secondaryDark duration-200 hover:underline`}
+            className={`${tag === 'book-notes' ? 'text-secondaryDark underline' : 'text-secondaryDarker'} hover:text-secondaryDark duration-200 hover:underline `}
           >
             Book Notes
           </Link>
