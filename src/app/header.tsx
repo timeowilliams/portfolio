@@ -1,8 +1,16 @@
 import React from 'react';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { CONFIG } from '@/config';
+import { EllipsisVertical } from 'lucide-react';
 
 const socialBorder = `border group hover:border-secondaryDarker duration-200 rounded px-1.5 py-1 border-neutral-800 items-center flex`;
 
@@ -25,16 +33,33 @@ export default function Header() {
       <div className="flex flex-row space-x-2">
         {CONFIG.socials.map((social, idx) => {
           return (
-            <a
-              key={idx}
-              href={social.link}
-              target="_blank"
-              className={`${socialBorder}`}
-            >
-              {social.icon}
-            </a>
+            <TooltipProvider key={idx}>
+              <Tooltip>
+                <TooltipTrigger className={`${socialBorder}`}>
+                  <Link href={social.link} target="_blank">
+                    {social.icon}
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>{social.platform}</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           );
         })}
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger className={`${socialBorder}`}>
+              <Link href="/socials">
+                <EllipsisVertical
+                  size={16}
+                  className="text-secondaryDarker group-hover:text-secondaryDark duration-200"
+                />
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Stats</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     </header>
   );
