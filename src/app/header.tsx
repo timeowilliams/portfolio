@@ -36,7 +36,7 @@ export default function Header() {
             return (
               <Tooltip key={idx}>
                 <TooltipTrigger className={`${socialBorder}`}>
-                  <Link href={social.link} target="_blank">
+                  <Link href={social.link} target="_blank" className='cursor-pointer'>
                     {social.icon}
                   </Link>
                 </TooltipTrigger>
@@ -51,7 +51,7 @@ export default function Header() {
           })}
           <Tooltip>
             <TooltipTrigger className={`${socialBorder}`}>
-              <Link href="/socials">
+              <Link href="/socials" className='cursor-pointer'>
                 <EllipsisVertical
                   size={16}
                   className="text-secondaryDarker group-hover:text-secondaryDark duration-200"
