@@ -1,13 +1,20 @@
 import React from 'react';
 
+
+
 import Image from 'next/image';
 import Link from 'next/link';
+
+
 
 import { postProcess, preProcess } from '@/lib/rehype-pre-raw';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrism from 'rehype-prism-plus';
 
+
+
 import { CopyButton } from './copy-button';
+
 
 const options = {
   mdxOptions: {
@@ -69,6 +76,14 @@ function Callout(props: any) {
   );
 }
 
+function RedirectLink(props: any) {
+  return (
+    <Link href={props.link} target="_blank" className="no-underline hover:underline font-bold text-white">
+      {props.name}
+    </Link>
+  );
+}
+
 function CodeBlock({ children, ...props }: { children: any; title: string }) {
   return (
     <>
@@ -88,6 +103,7 @@ let components = {
   Callout,
   Table,
   CodeBlock,
+  RedirectLink,
 };
 
 export function CustomMDX(props: any) {

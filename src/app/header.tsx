@@ -31,21 +31,24 @@ export default function Header() {
         </div>
       </div>
       <div className="flex flex-row space-x-2">
-        {CONFIG.socials.map((social, idx) => {
-          return (
-            <TooltipProvider key={idx}>
-              <Tooltip>
+        <TooltipProvider delayDuration={70}>
+          {CONFIG.socials.map((social, idx) => {
+            return (
+              <Tooltip key={idx}>
                 <TooltipTrigger className={`${socialBorder}`}>
                   <Link href={social.link} target="_blank">
                     {social.icon}
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent>{social.platform}</TooltipContent>
+                <TooltipContent
+                  side="bottom"
+                  className="mr-4 px-3 py-1.5 text-xs"
+                >
+                  {social.platform}
+                </TooltipContent>
               </Tooltip>
-            </TooltipProvider>
-          );
-        })}
-        <TooltipProvider>
+            );
+          })}
           <Tooltip>
             <TooltipTrigger className={`${socialBorder}`}>
               <Link href="/socials">
@@ -55,7 +58,7 @@ export default function Header() {
                 />
               </Link>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent className="mr-4 px-3 py-1.5 text-xs">
               <p>Stats</p>
             </TooltipContent>
           </Tooltip>
