@@ -195,9 +195,10 @@ export default async function Home() {
 
           {/* Reads */}
           <div className="flex flex-col space-y-2">
-            <span className="font-semibold md:px-6">Recent Reads</span>
+            <span className="font-semibold md:px-6">Favorite Books</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {CONFIG.reading
+                .filter((book) => book.favorite === true)
                 .sort(
                   (a, b) =>
                     new Date(b.dateFinished).getTime() -
@@ -245,7 +246,7 @@ export default async function Home() {
                 })}
             </div>
             <Link
-              href="/reading"
+              href="/books"
               className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer justify-end"
             >
               <span className="text-secondary text-sm">

@@ -11,11 +11,11 @@ type Book = (typeof CONFIG.reading)[number];
 type BooksByYear = { [year: string]: Book[] };
 
 export const metadata = {
-  title: 'Read',
+  title: "Books I've Read",
   description: 'Here are all the projects I have built.',
 };
 
-export default function ReadingPage() {
+export default function BooksPage() {
   const booksByYear = CONFIG.reading.reduce<BooksByYear>((acc, book) => {
     const year = new Date(book.dateFinished).getFullYear().toString();
     if (!acc[year]) {
@@ -81,12 +81,15 @@ export default function ReadingPage() {
                     >
                       <div className="flex flex-row space-x-4">
                         <div className="flex flex-col">
-                          <span className="text-secondaryDark">
-                            {book.title}
-                          </span>
-                          <span className="text-zinc-400">
-                            by {book.author}
-                          </span>
+                          <div className="flex flex-col sm:flex-row sm:space-x-1">
+                            <span className="text-secondaryDark">
+                              {book.title}
+                            </span>
+                            <span className="text-zinc-400">
+                              by {book.author}
+                            </span>
+                          </div>
+
                           <span className="text-yellow-600">
                             {'★'.repeat(book.rating)}
                           </span>
