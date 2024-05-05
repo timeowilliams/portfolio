@@ -4,9 +4,8 @@ import React from 'react';
 
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { api } from 'convex/_generated/api';
-import { useMutation } from 'convex/react';
-import { Loader2 } from 'lucide-react';
+import { api } from '@/convex/_generated/api';
+import { useMutation } from 'convex/react'; 
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -24,7 +23,7 @@ export default function Subscribe() {
   const createSubscriber = useMutation(api.subscribers.createSubscriber);
   return (
     <div className="bg-neutral-800/50 rounded-lg pt-6 pb-8 flex flex-col space-y-4 mt-4 animate-slide-from-down-and-fade-6">
-      <span className="text-neutral-400 md:px-6">
+      <span className="md:px-6">
         Join my newsletter to stay updated about the latest I&apos;m working on
         and share resources I&apos;ve come across.
       </span>

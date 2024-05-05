@@ -32,8 +32,8 @@ export default async function Home() {
       <div className="flex flex-col space-y-6 md:space-y-10 pb-20">
         <div className="flex flex-col md:px-6 animate-slide-from-down-and-fade-2">
           <div className="flex flex-col space-y-2">
-            <span className="font-semibold">About me</span>
-            <span className="text-secondaryDark leading-6">
+            <span className="font-semibold text-lg">About me</span>
+            <span className="text-neutral-400 leading-6">
               {CONFIG.description}
             </span>
           </div>
@@ -42,7 +42,7 @@ export default async function Home() {
         <div className="flex flex-col space-y-6">
           {/* Projects */}
           <div className="flex flex-col space-y-2 animate-slide-from-down-and-fade-3">
-            <span className="font-semibold md:px-6">Featured Projects</span>
+            <span className="font-semibold md:px-6 text-lg">Featured Projects</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {CONFIG.projects.map((project, idx) => {
                 if (project.featured) {
@@ -112,7 +112,7 @@ export default async function Home() {
 
           {/* Posts */}
           <div className="flex flex-col space-y-2 animate-slide-from-down-and-fade-4">
-            <span className="font-semibold md:px-6">Recent Posts</span>
+            <span className="font-semibold md:px-6 text-lg">Recent Posts</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {allPosts
                 .filter((post) => post.metadata.featured === 'true')
@@ -197,7 +197,7 @@ export default async function Home() {
 
           {/* Reads */}
           <div className="flex flex-col space-y-2 animate-slide-from-down-and-fade-5">
-            <span className="font-semibold md:px-6">Favorite Books</span>
+            <span className="font-semibold md:px-6 text-lg">Favorite Books</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {CONFIG.reading
                 .filter((book) => book.favorite === true)

@@ -27,7 +27,7 @@ export default function Header() {
         />
         <div className="flex flex-col">
           <span className="font-semibold">{CONFIG.name}</span>
-          <span className="text-secondaryDarker">{CONFIG.title}</span>
+          <span className="text-neutral-400">{CONFIG.title}</span>
         </div>
       </div>
       <div className="flex flex-row space-x-2">
