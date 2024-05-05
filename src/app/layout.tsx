@@ -5,8 +5,7 @@ import '../styles/globals.css';
 
 import { ContextProvider } from '@/components/context-provider';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
-
-import Header from './header';
+import { Toaster } from 'sonner';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -71,6 +70,7 @@ export default function RootLayout({
       >
         <ContextProvider>
           <main className="min-h-screen flex flex-col items-center">
+            <Toaster richColors position="bottom-center" />
             <MaxWidthWrapper>
               <div className="flex-1 w-full flex flex-col gap-8 items-center">
                 {children}

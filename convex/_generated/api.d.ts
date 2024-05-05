@@ -15,6 +15,7 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as socials from "../socials.js";
+import type * as subscribers from "../subscribers.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -26,6 +27,7 @@ import type * as socials from "../socials.js";
  */
 declare const fullApi: ApiFromModules<{
   socials: typeof socials;
+  subscribers: typeof subscribers;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,

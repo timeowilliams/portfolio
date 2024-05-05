@@ -7,12 +7,14 @@ import { calculateReadingTime, reformatDate } from '@/lib/utils';
 import { Redis } from '@upstash/redis';
 
 import Header from './header';
+import Subscribe from './subscribe';
 
 const redis = Redis.fromEnv();
 export const revalidate = 0;
 
 export default async function Home() {
   let allPosts = getPosts();
+
   const views = (
     await redis.mget<number[]>(
       ...allPosts.map((p) => ['pageviews', 'posts', p.slug].join(':')),
@@ -27,8 +29,8 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <div className="flex flex-col space-y-6 md:space-y-10 pb-10">
-        <div className="flex flex-col  md:px-6">
+      <div className="flex flex-col space-y-6 md:space-y-10 pb-20">
+        <div className="flex flex-col md:px-6 animate-slide-from-down-and-fade-2">
           <div className="flex flex-col space-y-2">
             <span className="font-semibold">About me</span>
             <span className="text-secondaryDark leading-6">
@@ -39,7 +41,7 @@ export default async function Home() {
 
         <div className="flex flex-col space-y-6">
           {/* Projects */}
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 animate-slide-from-down-and-fade-3">
             <span className="font-semibold md:px-6">Featured Projects</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {CONFIG.projects.map((project, idx) => {
@@ -109,7 +111,7 @@ export default async function Home() {
           </div>
 
           {/* Posts */}
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 animate-slide-from-down-and-fade-4">
             <span className="font-semibold md:px-6">Recent Posts</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {allPosts
@@ -194,7 +196,7 @@ export default async function Home() {
           </div>
 
           {/* Reads */}
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 animate-slide-from-down-and-fade-5">
             <span className="font-semibold md:px-6">Favorite Books</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {CONFIG.reading
@@ -269,6 +271,9 @@ export default async function Home() {
             </Link>
           </div>
         </div>
+
+        {/* Subscribe */}
+        <Subscribe />
       </div>
     </>
   );

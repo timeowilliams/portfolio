@@ -17,7 +17,7 @@ export default function ProjectsPage() {
       <div className="flex flex-col">
         <Link
           href="/"
-          className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer mb-4"
+          className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer mb-4 animate-slide-from-down-and-fade-1"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -35,11 +35,11 @@ export default function ProjectsPage() {
           </svg>
           <span className="text-secondaryDarker">Back</span>
         </Link>
-        <span className="text-4xl font-bold md:px-6 mb-6 md:mb-4">
+        <span className="text-4xl font-bold md:px-6 mb-6 md:mb-4 animate-slide-from-down-and-fade-2">
           All Projects
         </span>
         <div>
-          <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2">
+          <div className="grid grid-cols-1 gap-6 md:gap-1 md:px-2 animate-slide-from-down-and-fade-3">
             {CONFIG.projects.map((project, idx) => {
               return (
                 <Link

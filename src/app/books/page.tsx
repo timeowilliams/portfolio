@@ -33,7 +33,7 @@ export default function BooksPage() {
       <div className="flex flex-col">
         <Link
           href="/"
-          className="flex flex-row space-x-2 items-center md:px-4 group cursor-pointer mb-4"
+          className="flex flex-row space-x-2 items-center md:px-4 group cursor-pointer mb-4 animate-slide-from-down-and-fade-1"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@ export default function BooksPage() {
           </svg>
           <span className="text-secondaryDarker">Back</span>
         </Link>
-        <div className="flex flex-col space-y-2  md:px-4 mb-6 md:mb-4">
+        <div className="flex flex-col space-y-2  md:px-4 mb-6 md:mb-4 animate-slide-from-down-and-fade-2">
           <span className="text-4xl font-bold">Books I&apos;ve Read</span>
           <span className="text-sm text-zinc-400">
             Here is a list of {CONFIG.reading.length} books I&apos;ve read. Last
@@ -59,7 +59,7 @@ export default function BooksPage() {
           </span>
         </div>
 
-        <div className="flex flex-col space-y-4 mb-6 md:mb-4">
+        <div className="flex flex-col space-y-4 mb-6 md:mb-4 animate-slide-from-down-and-fade-3">
           {sortedYears.map(([year, books]) => (
             <div key={year}>
               <h2 className="text-2xl font-bold my-4 md:px-4">
