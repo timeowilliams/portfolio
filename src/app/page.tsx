@@ -112,7 +112,7 @@ export default async function Home() {
 
           {/* Posts */}
           <div className="flex flex-col space-y-2 animate-slide-from-down-and-fade-4">
-            <span className="font-semibold md:px-6 text-lg">Recent Posts</span>
+            <span className="font-semibold md:px-6 text-lg">Featured Posts</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {allPosts
                 .filter((post) => post.metadata.featured === 'true')
