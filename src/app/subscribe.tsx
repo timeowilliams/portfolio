@@ -53,7 +53,7 @@ export default function Subscribe() {
                     {...field}
                     type="email"
                     placeholder="your@email.com"
-                    className="w-full h-10 px-3 py-2 rounded-lg border border-neutral-800 bg-neutral-800/50 text-neutral-400 focus:outline-none focus:ring-0.5 focus:ring-secondary/80 focus:ring-offset-0.5 focus:ring-offset-secondary-800 focus:border-secondary/80"
+                    className="w-full h-10 px-3 text-base py-2 rounded-lg border border-neutral-800 bg-neutral-800/50 text-neutral-400 focus:outline-none focus:ring-0.5 focus:ring-secondary/80 focus:ring-offset-0.5 focus:ring-offset-secondary-800 focus:border-secondary/80"
                   />
                 </FormControl>
               </FormItem>
