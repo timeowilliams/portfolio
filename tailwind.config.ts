@@ -2,10 +2,6 @@ import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 
-
-
-
-
 const config: Config = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',

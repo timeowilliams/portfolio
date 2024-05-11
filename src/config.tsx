@@ -54,7 +54,7 @@ and experience on web & mobile development.`,
       featured: true,
       name: 'TechStackFinder',
       slug: 'tech-stack-finder',
-      description: 'Top stacks for building projects and saas.',
+      description: 'Top stacks for building projects and SaaS.',
       image:
         'https://res.cloudinary.com/duud9d8dv/image/upload/v1705091981/tech-stack-finder_inkeoz.png',
       link: 'https://techstackfinder.com/',

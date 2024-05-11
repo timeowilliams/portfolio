@@ -22,7 +22,7 @@ export default function Subscribe() {
   });
   const createSubscriber = useMutation(api.subscribers.createSubscriber);
   return (
-    <div className="bg-neutral-800/50 rounded-lg pt-6 pb-8  px-6 flex flex-col space-y-4 mt-4 animate-slide-from-down-and-fade-6">
+    <div className="bg-neutral-800/20 rounded-lg pt-6 pb-8  px-6 flex flex-col space-y-4 mt-4 animate-slide-from-down-and-fade-6">
       <span>
         Join my newsletter to stay updated about the latest I&apos;m working on
         and share resources I&apos;ve come across.
@@ -53,7 +53,7 @@ export default function Subscribe() {
                     {...field}
                     type="email"
                     placeholder="your@email.com"
-                    className="w-full h-10 px-3 text-base py-2 rounded-lg border border-neutral-800 bg-neutral-800/50 text-neutral-400 focus:outline-none focus:ring-0.5 focus:ring-secondary/80 focus:ring-offset-0.5 focus:ring-offset-secondary-800 focus:border-secondary/80"
+                    className="w-full h-10 px-3 text-base py-2 rounded-lg border border-neutral-800 bg-neutral-800/50 text-neutral-400 focus:outline-none focus:ring-0.5 focus:ring-secondary/20 focus:ring-offset-0.5 focus:ring-offset-secondary-800 focus:border-secondary/20"
                   />
                 </FormControl>
               </FormItem>

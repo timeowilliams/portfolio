@@ -1,13 +1,13 @@
 import React from 'react';
-
+import { SOCIAL_ICON_STYLE } from '@/consts';
 export const DiscordIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="22"
-      height="22"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
-      className="text-secondaryDarker group-hover:text-secondaryDark duration-200"
+      className={SOCIAL_ICON_STYLE}
     >
       <path
         fill="currentColor"

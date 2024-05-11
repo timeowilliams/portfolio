@@ -6,8 +6,9 @@ import { getPosts } from '@/lib/posts';
 import { calculateReadingTime, reformatDate } from '@/lib/utils';
 import { Redis } from '@upstash/redis';
 
-import Header from './header';
-import Subscribe from './subscribe';
+import Footer from './_components/footer';
+import Header from './_components/header';
+import Subscribe from './_components/subscribe';
 
 const redis = Redis.fromEnv();
 export const revalidate = 0;
@@ -29,245 +30,154 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <div className="flex flex-col space-y-6 md:space-y-10 pb-20">
+      <div className="flex flex-col space-y-6 md:space-y-12 pb-8 pt-4">
         <div className="flex flex-col md:px-6 animate-slide-from-down-and-fade-2">
           <div className="flex flex-col space-y-2">
-            <span className="font-semibold">About me</span>
-            <span className="text-neutral-400 leading-6">
+            <span className="font-semibold text-lg">About me</span>
+            <span className="text-neutral-300/80 leading-6">
               {CONFIG.description}
             </span>
           </div>
         </div>
 
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-6 md:space-y-12">
           {/* Projects */}
-          <div className="flex flex-col space-y-2 animate-slide-from-down-and-fade-3">
-            <span className="font-semibold md:px-6">Featured Projects</span>
-            <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
-              {CONFIG.projects.map((project, idx) => {
-                if (project.featured) {
-                  return (
-                    <Link
-                      key={idx}
-                      href={project.link}
-                      target="_blank"
-                      className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
-                    >
-                      <div className="flex flex-row space-x-4">
-                        <Image
-                          src={project.image}
-                          alt=""
-                          width={40}
-                          height={40}
-                          className="w-[40px] h-[40px]"
-                        />
-                        <div className="flex flex-col">
-                          <span className="text-secondaryDark">
-                            {project.name}
-                          </span>
-                          <span className="text-secondaryDarker">
-                            {project.description}
-                          </span>
-                        </div>
-                      </div>
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="text-secondaryDarker"
+          <div className="flex flex-col space-y-4 animate-slide-from-down-and-fade-3">
+            <div className="flex flex-col space-y-2">
+              <span className="font-semibold md:px-6 text-lg">
+                Featured Projects
+              </span>
+              <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
+                {CONFIG.projects.map((project, idx) => {
+                  if (project.featured) {
+                    return (
+                      <Link
+                        key={idx}
+                        href={project.link}
+                        target="_blank"
+                        className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:px-4 md:py-3 rounded-lg cursor-pointer"
                       >
-                        <path
-                          d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </Link>
-                  );
-                }
-              })}
+                        <div className="flex flex-row space-x-4">
+                          <Image
+                            src={project.image}
+                            alt=""
+                            width={40}
+                            height={40}
+                            className="w-[40px] h-[40px]"
+                          />
+                          <div className="flex flex-col">
+                            <span className="text-secondaryDark">
+                              {project.name}
+                            </span>
+                            <span className="text-secondaryDarker">
+                              {project.description}
+                            </span>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  }
+                })}
+              </div>
             </div>
             <Link
               href="/projects"
               className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer justify-end"
             >
-              <span className="text-secondary text-sm">All Projects</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                className="text-secondary group-hover:translate-x-1 duration-200"
-              >
-                <path
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <span className="text-neutral-400 text-sm underline underline-offset-4 hover:text-secondary duration-200">
+                All Projects
+              </span>
             </Link>
           </div>
 
           {/* Posts */}
-          <div className="flex flex-col space-y-2 animate-slide-from-down-and-fade-4">
-            <span className="font-semibold md:px-6">Featured Posts</span>
-            <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
-              {allPosts
-                .filter((post) => post.metadata.featured === 'true')
-                .sort((a, b) => {
-                  if (
-                    new Date(a.metadata.publishedAt) >
-                    new Date(b.metadata.publishedAt)
-                  ) {
-                    return -1;
-                  }
-                  return 1;
-                })
-                .slice(0, 3)
-                .map((post) => (
-                  <Link
-                    key={post.slug}
-                    href={`/posts/${post.slug}`}
-                    className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
-                  >
-                    <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-4 animate-slide-from-down-and-fade-4">
+            <div className="flex flex-col space-y-2">
+              <span className="font-semibold md:px-6 text-lg">
+                Featured Posts
+              </span>
+              <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
+                {allPosts
+                  .filter((post) => post.metadata.featured === 'true')
+                  .sort((a, b) => {
+                    if (
+                      new Date(a.metadata.publishedAt) >
+                      new Date(b.metadata.publishedAt)
+                    ) {
+                      return -1;
+                    }
+                    return 1;
+                  })
+                  .slice(0, 3)
+                  .map((post) => (
+                    <Link
+                      key={post.slug}
+                      href={`/posts/${post.slug}`}
+                      className="flex flex-row justify-between space-x-2 items-start md:items-center duration-300 md:hover:bg-hoverBackground md:px-4 md:py-3 rounded-lg cursor-pointer"
+                    >
                       <span className="text-secondaryDark">
                         {post.metadata.title}
                       </span>
-                      <div className="flex flex-row space-x-2 items-center text-secondaryDarker">
-                        <span>{reformatDate(post.metadata.publishedAt)}</span>
-                        <span className="h-1 w-1 bg-secondaryDarker rounded-full" />
-                        <span>
-                          <span>
-                            {Intl.NumberFormat('en-US', {
-                              notation: 'compact',
-                            }).format(views[post.slug])}{' '}
-                            {' views'}
-                          </span>
-                        </span>
-                        <span className="h-1 w-1 bg-secondaryDarker rounded-full" />
-                        <span>
-                          <span>
-                            {calculateReadingTime(post.content)}
-                            {' min read'}
-                          </span>
-                        </span>
-                      </div>
-                    </div>
 
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="text-secondaryDarker"
-                    >
-                      <path
-                        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </Link>
-                ))}
+                      <span className="text-neutral-400 text-sm whitespace-nowrap">
+                        {reformatDate(post.metadata.publishedAt)}
+                      </span>
+                    </Link>
+                  ))}
+              </div>
             </div>
+
             <Link
               href="/posts"
               className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer  justify-end"
             >
-              <span className="text-secondary text-sm">All Posts</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                className="text-secondary group-hover:translate-x-1 duration-200"
-              >
-                <path
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
-                  clipRule="evenodd"
-                />
-              </svg>
+                      <span className="text-neutral-400 text-sm underline underline-offset-4 hover:text-secondary duration-200">
+                All Posts
+              </span>
             </Link>
           </div>
 
           {/* Reads */}
-          <div className="flex flex-col space-y-2 animate-slide-from-down-and-fade-5">
-            <span className="font-semibold md:px-6">Favorite Books</span>
-            <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
-              {CONFIG.reading
-                .filter((book) => book.favorite === true)
-                .sort(
-                  (a, b) =>
-                    new Date(b.dateFinished).getTime() -
-                    new Date(a.dateFinished).getTime(),
-                )
-                .slice(0, 3)
-                .map((book, idx) => {
-                  const reformattedDate = reformatDate(book.dateFinished);
-                  return (
-                    <Link
-                      key={idx}
-                      href={book.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
-                    >
-                      <div className="flex flex-row space-x-4">
-                        <div className="flex flex-col">
-                          <span className="text-secondaryDark">
-                            {book.title}{' '}
-                            <span className="text-secondaryDarker">
-                              by {book.author}
-                            </span>
-                          </span>
-                          <span className="text-secondaryDarker">
-                            Finished: {reformatDate(book.dateFinished)}
-                          </span>
-                        </div>
-                      </div>
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="text-secondaryDarker"
+          <div className="flex flex-col space-y-4 animate-slide-from-down-and-fade-5">
+            <div className="flex flex-col space-y-2">
+              <span className="font-semibold md:px-6 text-lg">
+                Favorite Books
+              </span>
+              <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
+                {CONFIG.reading
+                  .filter((book) => book.favorite === true)
+                  .sort(
+                    (a, b) =>
+                      new Date(b.dateFinished).getTime() -
+                      new Date(a.dateFinished).getTime(),
+                  )
+                  .slice(0, 3)
+                  .map((book, idx) => {
+                    const reformattedDate = reformatDate(book.dateFinished);
+                    return (
+                      <Link
+                        key={idx}
+                        href={book.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-row justify-between items-center duration-300 md:hover:bg-hoverBackground md:p-4 rounded-lg cursor-pointer"
                       >
-                        <path
-                          d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </Link>
-                  );
-                })}
+                        <span className="text-secondaryDark">{book.title}</span>
+                        <span className="text-neutral-400 text-sm whitespace-nowrap">
+                          by {book.author}
+                        </span>
+                      </Link>
+                    );
+                  })}
+              </div>
             </div>
             <Link
               href="/books"
               className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer justify-end"
             >
-              <span className="text-secondary text-sm">
+              <span className="text-neutral-400 text-sm underline underline-offset-4 hover:text-secondary duration-200">
                 Books I&apos;ve Read
               </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                className="text-secondary group-hover:translate-x-1 duration-200"
-              >
-                <path
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
-                  clipRule="evenodd"
-                />
-              </svg>
             </Link>
           </div>
         </div>
@@ -275,6 +185,7 @@ export default async function Home() {
         {/* Subscribe */}
         <Subscribe />
       </div>
+      <Footer />
     </>
   );
 }
