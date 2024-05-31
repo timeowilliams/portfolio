@@ -61,6 +61,15 @@ and experience on web & mobile development.`,
     },
     {
       featured: true,
+      name: 'RecipeBudd',
+      slug: 'repo-mapper',
+      description: 'Visualize Your GitHub Repos in ASCII.',
+      image:
+        'https://res.cloudinary.com/duud9d8dv/image/upload/v1708108981/portfolio/repo-mapper_yntapy.png',
+      link: 'https://repo-mapper.vercel.app/',
+    },
+    {
+      featured: false,
       name: 'RepoMapper',
       slug: 'repo-mapper',
       description: 'Visualize Your GitHub Repos in ASCII.',
@@ -105,6 +114,14 @@ and experience on web & mobile development.`,
     },
   ],
   reading: [
+    {
+      title: 'Love Yourself Like Your Life Depends on It',
+      author: 'Kamal Ravikant',
+      link: 'https://www.amazon.com/Love-Yourself-Like-Your-Depends/dp/0062968726',
+      rating: 2,
+      dateFinished: '2024-05-31',
+      favorite: false,
+    },
     {
       title: 'The Almanack of Naval Ravikant',
       author: 'Eric Jorgenson',
