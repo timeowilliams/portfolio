@@ -22,7 +22,7 @@ export default function Subscribe() {
   });
   const createSubscriber = useMutation(api.subscribers.createSubscriber);
   return (
-    <div className="bg-neutral-800/20 rounded-lg pt-6 pb-8  px-6 flex flex-col space-y-4 mt-4 animate-slide-from-down-and-fade-6">
+    <div className="bg-neutral-800/20 rounded-lg pt-6 md:pb-8  px-6 flex flex-col space-y-4 mt-4 animate-slide-from-down-and-fade-6">
       <span>
         Join my newsletter to stay updated about the latest I&apos;m working on
         and share resources I&apos;ve come across.

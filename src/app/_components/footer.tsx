@@ -7,7 +7,7 @@ import { CONFIG } from '@/config';
 export default function Footer() {
   return (
     <footer className="animate-slide-from-down-and-fade-6 pb-20 w-full items-center justify-center">
-      <div className="flex flex-row space-x-6 items-center justify-center pb-10">
+      <div className="flex flex-row space-x-6 items-center justify-center md:pb-10">
         {CONFIG.socials.map((social, idx) => {
           return (
             <Link

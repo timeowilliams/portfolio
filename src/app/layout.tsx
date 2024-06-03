@@ -78,7 +78,7 @@ export default function RootLayout({
             </MaxWidthWrapper>
           </main>
         </ContextProvider>
-        <div className="pointer-events-none bg-white dark:bg-primary fixed bottom-0 left-0 h-28 [mask-image:linear-gradient(transparent,#000000)] w-full"></div>
+        <div className="pointer-events-none bg-primary fixed bottom-0 left-0 h-28 [mask-image:linear-gradient(transparent,#000000)] w-full"></div>
       </body>
     </html>
   );
