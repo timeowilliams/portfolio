@@ -13,7 +13,7 @@ console.error = (...args: any) => {
   error(...args);
 };
 
-export default function Card({
+export default function Graph({
   icon,
   link,
   type,
@@ -28,7 +28,7 @@ export default function Card({
 }) {
   const valueFormatter = (number: any) =>
     `${Intl.NumberFormat('us').format(number).toString()}`;
-  const transformedData = transformData(rawData); 
+  const transformedData = transformData(rawData);
   return (
     <Link
       href={link}

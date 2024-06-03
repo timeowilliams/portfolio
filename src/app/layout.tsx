@@ -44,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <link
@@ -78,6 +78,7 @@ export default function RootLayout({
             </MaxWidthWrapper>
           </main>
         </ContextProvider>
+        <div className="pointer-events-none bg-white dark:bg-primary fixed bottom-0 left-0 h-28 [mask-image:linear-gradient(transparent,#000000)] w-full"></div>
       </body>
     </html>
   );

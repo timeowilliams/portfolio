@@ -61,22 +61,13 @@ and experience on web & mobile development.`,
     },
     {
       featured: true,
-      name: 'RecipeBudd',
-      slug: 'repo-mapper',
-      description: 'Visualize Your GitHub Repos in ASCII.',
-      image:
-        'https://res.cloudinary.com/duud9d8dv/image/upload/v1708108981/portfolio/repo-mapper_yntapy.png',
-      link: 'https://repo-mapper.vercel.app/',
-    },
-    {
-      featured: false,
       name: 'RepoMapper',
       slug: 'repo-mapper',
       description: 'Visualize Your GitHub Repos in ASCII.',
       image:
         'https://res.cloudinary.com/duud9d8dv/image/upload/v1708108981/portfolio/repo-mapper_yntapy.png',
       link: 'https://repo-mapper.vercel.app/',
-    },
+    }, 
     {
       featured: false,
       name: 'Open Graph Vault',

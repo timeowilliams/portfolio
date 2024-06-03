@@ -21,14 +21,6 @@ export default function Footer() {
           );
         })}
       </div>
-      <div className="flex flex-row space-x-2 items-center justify-center text-sm">
-        <span className='text-secondaryDarker'>
-          Inspired by{' '}
-          <Link href="https://www.ibelick.com/" target="_blank" className='text-secondaryDarker hover:text-secondaryDark duration-200 hover:underline'>
-            Julien Thibeaut
-          </Link>
-        </span>
-      </div>
     </footer>
   );
 }

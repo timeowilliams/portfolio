@@ -33,7 +33,7 @@ export default async function Home() {
       <div className="flex flex-col space-y-6 md:space-y-12 pb-8 pt-4">
         <div className="flex flex-col md:px-6 animate-slide-from-down-and-fade-2">
           <div className="flex flex-col space-y-2">
-            <span className="font-semibold text-lg">About me</span>
+            <span className="font-semibold ">About me</span>
             <span className="text-neutral-300/80 leading-6">
               {CONFIG.description}
             </span>
@@ -44,9 +44,7 @@ export default async function Home() {
           {/* Projects */}
           <div className="flex flex-col space-y-4 animate-slide-from-down-and-fade-3">
             <div className="flex flex-col space-y-2">
-              <span className="font-semibold md:px-6 text-lg">
-                Featured Projects
-              </span>
+              <span className="font-semibold md:px-6 ">Featured Projects</span>
               <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
                 {CONFIG.projects.map((project, idx) => {
                   if (project.featured) {
@@ -93,9 +91,7 @@ export default async function Home() {
           {/* Posts */}
           <div className="flex flex-col space-y-4 animate-slide-from-down-and-fade-4">
             <div className="flex flex-col space-y-2">
-              <span className="font-semibold md:px-6 text-lg">
-                Featured Posts
-              </span>
+              <span className="font-semibold md:px-6 ">Featured Posts</span>
               <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
                 {allPosts
                   .filter((post) => post.metadata.featured === 'true')
@@ -131,7 +127,7 @@ export default async function Home() {
               href="/posts"
               className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer  justify-end"
             >
-                      <span className="text-neutral-400 text-sm underline underline-offset-4 hover:text-secondary duration-200">
+              <span className="text-neutral-400 text-sm underline underline-offset-4 hover:text-secondary duration-200">
                 All Posts
               </span>
             </Link>
@@ -140,16 +136,14 @@ export default async function Home() {
           {/* Reads */}
           <div className="flex flex-col space-y-4 animate-slide-from-down-and-fade-5">
             <div className="flex flex-col space-y-2">
-              <span className="font-semibold md:px-6 text-lg">
-                Favorite Books
-              </span>
+              <span className="font-semibold md:px-6 ">Favorite Books</span>
               <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
                 {CONFIG.reading
                   .filter((book) => book.favorite === true)
                   .sort(
                     (a, b) =>
-                      new Date(b.dateFinished).getTime() -
-                      new Date(a.dateFinished).getTime(),
+                      new Date(a.dateFinished).getTime() -
+                      new Date(b.dateFinished).getTime(),
                   )
                   .slice(0, 3)
                   .map((book, idx) => {

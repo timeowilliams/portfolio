@@ -8,7 +8,7 @@ import { findMostRecentEntryByPlatform } from '@/lib/utils';
 import { useQuery } from 'convex/react';
 
 import { api } from '../../../convex/_generated/api';
-import Card from './card';
+import Graph from './graph';
 
 export default function SocialAnalyticsPage() {
   const socials = useQuery(api.socials.get);
@@ -47,7 +47,9 @@ export default function SocialAnalyticsPage() {
       10,
     );
     return lastB - lastA;
-  });
+  } );
+  
+  console.log(sortedData);
 
   return (
     <div className="grid grid-cols-1 gap-10 pb-10 w-full">
@@ -75,7 +77,7 @@ export default function SocialAnalyticsPage() {
         <span className="text-4xl font-bold  mb-6">Social Media Stats</span>
         <div className="grid grid-cols-1 gap-4 w-full">
           {sortedData.map(({ data, type }, idx) => (
-            <Card key={idx} {...data} type={type} />
+            <Graph key={idx} {...data} type={type} />
           ))}
         </div>
       </div>
