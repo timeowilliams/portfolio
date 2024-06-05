@@ -66,6 +66,7 @@ and experience on web development.`,
       link: 'https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548',
       rating: 5,
       dateFinished: '2024-03-07',
+      favorite: true
     },
   ],
   bucketList: [
