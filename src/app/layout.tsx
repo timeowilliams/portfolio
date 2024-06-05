@@ -61,9 +61,10 @@ export default function RootLayout({
         />
         <script
           src="https://beamanalytics.b-cdn.net/beam.min.js"
-          data-token="a07e2826-5910-4684-9e69-0ec4388a0509"
+          data-token="f0a810b3-7893-4402-bfdd-fa30fd6f48de"
           async
-        ></script>
+        >
+        </script>
       </head>
       <body
         className={`bg-primary text-secondary text-sm md:text-base ${inter.className}`}
