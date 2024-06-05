@@ -23,7 +23,7 @@ export default function Graph({
   icon: any;
   link: string;
   type: string;
-  followersCount: string;
+  followersCount?: string;
   rawData: any;
 }) {
   const valueFormatter = (number: any) =>

@@ -24,3 +24,7 @@ Go to [Upstash](https://upstash.com/), create an account, create a database in U
 ## Analytics
 
 Go to [Beam Analytics](https://beamanalytics.io/), add your url and replace the data-token in src/app/layout.tsx.
+
+## Inspiration
+
+This portfolio was built on top of [Hosna Qasmei](https://github.com/hqasmei/portfolio)'s repo

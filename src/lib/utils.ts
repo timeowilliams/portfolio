@@ -85,7 +85,7 @@ export function transformData(data: any) {
   // Process each data entry
   data.forEach((item: any) => {
     const dateStr = formatDate(item._creationTime);
-    const followersCount = parseInt(item.followersCount.replace(/,/g, ''), 10);
+    const followersCount = parseInt(item?.followersCount.replace(/,/g, ''), 10);
     // If we have an entry for this date and the current item is more recent, update the map
     if (
       !latestEntries.has(dateStr) ||

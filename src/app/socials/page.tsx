@@ -31,25 +31,26 @@ export default function SocialAnalyticsPage() {
     { data: linkedinData, type: 'Followers' },
   ];
 
-  const sortedData = dataWithType.sort((a, b) => {
-    const lastA = parseInt(
-      a.data.rawData[a.data.rawData.length - 1]?.followersCount.replace(
-        /,/g,
-        '',
-      ) || '0',
-      10,
-    );
-    const lastB = parseInt(
-      b.data.rawData[a.data.rawData.length - 1]?.followersCount.replace(
-        /,/g,
-        '',
-      ) || '0',
-      10,
-    );
-    return lastB - lastA;
-  });
+  // const sortedData = dataWithType.sort((a, b) => {
+  //   const lastA = parseInt(
+      
+  //     a.data?.rawData[a.data.rawData.length - 1]?.["followersCount"]?.replace(
+  //       /,/g,
+  //       '',
+  //     ) || '0',
+  //     10,
+  //   );
+  //   const lastB = parseInt(
+  //     b.data.rawData[a.data.rawData.length - 1]?.followersCount.replace(
+  //       /,/g,
+  //       '',
+  //     ) || '0',
+  //     10,
+  //   );
+  //   return lastB - lastA;
+  // });
 
-  console.log('sortedData is', sortedData);
+  // console.log('sortedData is', sortedData);
 
   return (
     <div className="grid grid-cols-1 gap-10 pb-10 w-full">
@@ -76,7 +77,7 @@ export default function SocialAnalyticsPage() {
         </Link>
         <span className="text-4xl font-bold  mb-6">Social Media Stats</span>
         <div className="grid grid-cols-1 gap-4 w-full">
-          {sortedData.map(({ data, type }, idx) => (
+          {dataWithType.map(({ data, type }, idx) => (
             <Graph key={idx} {...data} type={type} />
           ))}
         </div>
