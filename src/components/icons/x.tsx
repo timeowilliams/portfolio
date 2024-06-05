@@ -10,7 +10,7 @@ export const XIcon = () => {
       width="21"
       height="21"
       viewBox="0 0 24 24"
-      className={cn(SOCIAL_ICON_STYLE,`mt-0.5`)}
+      className={cn(SOCIAL_ICON_STYLE,`mt-0.5 `)}
     >
       <path
         fill="currentColor"
