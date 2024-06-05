@@ -51,12 +51,13 @@ export function findMostRecentEntryByPlatform(platformName: string, data: any) {
     (entry: any) => entry.platform === platformName,
   );
 
+  // TODO: Rewrite logic/causing bugs when uncommented
   // Sort by _creationTime in descending order (most recent first)
-  const sortedEntries = filteredEntries.sort(
-    (a: any, b: any) => b._creationTime - a._creationTime,
-  );
+  // const sortedEntries = filteredEntries.sort(
+  //   (a: any, b: any) => b._creationTime - a._creationTime,
+  // );
 
-  let temp = sortedEntries[0];
+  const temp = { ...getSocialData[0], rawData: [] }
   temp['icon'] = getSocialData[0].icon;
   temp['link'] = getSocialData[0].link;
   temp['rawData'] = filteredEntries;

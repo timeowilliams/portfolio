@@ -47,9 +47,9 @@ export default function SocialAnalyticsPage() {
       10,
     );
     return lastB - lastA;
-  } );
-  
-  console.log(sortedData);
+  });
+
+  console.log('sortedData is', sortedData);
 
   return (
     <div className="grid grid-cols-1 gap-10 pb-10 w-full">
