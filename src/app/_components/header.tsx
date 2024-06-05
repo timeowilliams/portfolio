@@ -20,7 +20,7 @@ export default function Header() {
       <div className="flex flex-row items-center space-x-3">
         <Image
           src={CONFIG.headshot}
-          alt="Hosna Qasmei headshot"
+          alt="Timeo Williams headshot"
           width={100}
           height={100}
           className="rounded-full h-[48px] w-[48px]"

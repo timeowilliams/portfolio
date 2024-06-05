@@ -26,8 +26,8 @@ export async function generateMetadata({
 
   let { metadata, slug, content } = post;
   let ogImage = metadata.image
-    ? `https://www.hosnaqasmei.com${metadata.image}`
-    : `https://www.hosnaqasmei.com/og?title=${metadata.title}`;
+    ? `https://www.timeowilliams.com${metadata.image}`
+    : `https://www.timeowilliams.com/og?title=${metadata.title}`;
 
   return {
     title: metadata.title,
@@ -36,7 +36,7 @@ export async function generateMetadata({
       title: metadata.title,
       description: metadata.summary,
       type: 'article',
-      url: `https://www.hosnaqasmei.com/posts/${post.slug}`,
+      url: `https://www.timeowilliams.com/posts/${post.slug}`,
       images: [
         {
           url: ogImage,

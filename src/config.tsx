@@ -13,7 +13,11 @@ export const CONFIG = {
   description: `Hi, I'm Timeo. I'm based in New York City, New York. In addition to coding, I also make YouTube videos, sharing my knowledge
 and experience on web development.`,
   socials: [
-    { platform: 'X', link: 'https://twitter.com/timeowilliams', icon: <XIcon /> },
+    {
+      platform: 'X',
+      link: 'https://twitter.com/timeowilliams',
+      icon: <XIcon />,
+    },
     {
       platform: 'GitHub',
       link: 'https://github.com/timeowilliams',
@@ -43,20 +47,19 @@ and experience on web development.`,
   projects: [
     {
       featured: true,
-      name: 'TechStackFinder',
-      slug: 'tech-stack-finder',
-      description: 'Top stacks for building projects and SaaS.',
+      name: 'Kafka-Penguin',
+      slug: 'kafka-penguin',
+      description: 'Message Reprocessing Lib for KafkaJS.',
       image:
-        'https://res.cloudinary.com/duud9d8dv/image/upload/v1705091981/tech-stack-finder_inkeoz.png',
-      link: 'https://techstackfinder.com/',
+        'https://res.cloudinary.com/dnzzm3cnf/image/upload/v1717618939/kafka-penguin_ocljx4.png',
+      link: 'https://github.com/oslabs-beta/kafka-penguin?tab=readme-ov-file',
     },
-
   ],
   posts: [
     {
-      title: 'Pagination with shadcn/ui',
+      title: 'My first post',
       slug: '',
-      views: '35,530 views',
+      views: '0 views',
     },
   ],
   reading: [
@@ -66,7 +69,7 @@ and experience on web development.`,
       link: 'https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548',
       rating: 5,
       dateFinished: '2024-03-07',
-      favorite: true
+      favorite: true,
     },
   ],
   bucketList: [
