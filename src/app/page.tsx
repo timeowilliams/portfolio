@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { SendEventOnLoad } from '@/components/send-event-on-load';
 import { CONFIG } from '@/config';
 import { getPosts } from '@/lib/posts';
 import { calculateReadingTime, reformatDate } from '@/lib/utils';
@@ -27,8 +28,10 @@ export default async function Home() {
     },
     {} as Record<string, number>,
   );
+
   return (
     <>
+      <SendEventOnLoad eventKey="User hit home page" />
       <Header />
       <div className="flex flex-col space-y-6 md:space-y-12 pb-8 pt-4">
         <div className="flex flex-col md:px-6 animate-slide-from-down-and-fade-2">

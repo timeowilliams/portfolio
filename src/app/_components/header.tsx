@@ -20,10 +20,11 @@ export default function Header() {
       <div className="flex flex-row items-center space-x-3">
         <Image
           src={CONFIG.headshot}
-          alt=""
+          alt="Hosna Qasmei headshot"
           width={100}
           height={100}
           className="rounded-full h-[48px] w-[48px]"
+          priority
         />
         <div className="flex flex-col">
           <span className="font-semibold">{CONFIG.name}</span>
