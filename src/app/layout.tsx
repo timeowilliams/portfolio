@@ -10,14 +10,14 @@ import { Toaster } from 'sonner';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.hosnaqasmei.com/'),
-  title: { default: 'Hosna Qasmei', template: '%s | Hosna Qasmei' },
+  metadataBase: new URL('https://www.timeowilliams.com/'),
+  title: { default: 'Timeo Williams', template: '%s | Timeo Williams' },
   description: 'Developer & YouTuber',
   openGraph: {
-    title: 'Hosna Qasmei',
+    title: 'Timeo Williams',
     description: 'Developer & YouTuber.',
-    url: 'https://www.hosnaqasmei.com/',
-    siteName: 'Hosna Qasmei',
+    url: 'https://www.timeowilliams.com/',
+    siteName: 'Timeo Williams',
     locale: 'en_US',
     type: 'website',
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: 'Hosna Qasmei',
+    title: 'Timeo Williams',
     card: 'summary_large_image',
   },
 };

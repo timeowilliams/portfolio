@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
     new URL('../../../public/fonts/Inter-SemiBold.otf', import.meta.url),
   ).then((res) => res.arrayBuffer());
   const fontData = await font;
-
+  //TODO: create URL for my photo
   return new ImageResponse(
     (
       <div
@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
           flexDirection: 'column',
           alignItems: 'flex-start',
           justifyContent: 'center',
-          backgroundImage: 'url(https://hosnaqasmei.com/og-bg.png)',
+          backgroundImage: 'url(https://timeowilliams.com/og-bg.png)',
         }}
       >
         <div

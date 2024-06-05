@@ -9,15 +9,15 @@
 ## Running Locally
 
 ```bash
-git clone https://github.com/hqasmei/portfolio.git
+git clone https://github.com/timeowilliams/portfolio.git
 cd portfolio
 bun install
 bun dev
 ```
 
-Create a `.env` file similar to [`.env.example`](https://github.com/hqasmei/portfolio/blob/main/.env.example).
+Create a `.env` file similar to [`.env.example`](https://github.com/timeowilliams/portfolio/blob/main/.env.example).
 
-## Database 
+## Database
 
 Go to [Upstash](https://upstash.com/), create an account, create a database in Upstash Redis and add the generate UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.
 
