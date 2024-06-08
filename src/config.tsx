@@ -10,8 +10,7 @@ export const CONFIG = {
   headshot:
     'https://res.cloudinary.com/dnzzm3cnf/image/upload/v1717611006/T052J0LDAAG-U052FG2TB6E-85836b0496a8-512_otejdo.png',
   title: 'Software Developer',
-  description: `Hi, I'm Timeo. I'm based in New York City, New York. In addition to coding, I also make YouTube videos, sharing my knowledge
-and experience on web development.`,
+  description: `hey there, i'm timeo. i'm based in nyc. usually coding (preferably open-source), lifting (2024 goal),and practicing bachata/piano/something sensual.`,
   socials: [
     {
       platform: 'X',
@@ -68,9 +67,34 @@ and experience on web development.`,
       author: 'William Zinsser',
       link: 'https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548',
       rating: 5,
-      dateFinished: '2024-03-07',
+      dateFinished: '',
       favorite: true,
     },
+    {
+      title: 'A Philosophy of Software Design',
+      author: 'John Ousterhout',
+      link: 'https://milkov.tech/assets/psd.pdf',
+      rating: 5,
+      dateFinished: '',
+      favorite: true,
+    },
+    {
+      title: 'Learning Domain Driven Design',
+      author: 'Vlad Khononov',
+      link: 'https://dl.ebooksworld.ir/books/Learning.Domain-Driven.Design.9781098100131.EBooksWorld.ir.pdf',
+      rating: 5,
+      dateFinished: '',
+      favorite: true,
+    },
+    {
+      title: 'Fall in Love with the Problem, Not the Solution',
+      author: 'Uri Levine',
+      link: 'https://urilevine.com/book/',
+      rating: 4,
+      dateFinished: '',
+      favorite: true,
+    },
+
   ],
   bucketList: [
     { item: 'Visit all the continents', isChecked: false },

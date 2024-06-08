@@ -55,7 +55,7 @@ export default function BooksPage() {
           <span className="text-4xl font-bold">Books I&apos;ve Read</span>
           <span className="text-sm text-zinc-400">
             Here is a list of {CONFIG.reading.length} books I&apos;ve read. Last
-            updated on June 3rd, 2024.
+            updated on June 8th, 2024.
           </span>
         </div>
 
