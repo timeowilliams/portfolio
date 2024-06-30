@@ -71,6 +71,14 @@ export const CONFIG = {
       favorite: true,
     },
     {
+      title: 'Software Engineering at Google',
+      author: 'Titus',
+      link: 'https://abseil.io/resources/swe-book/html/toc.html',
+      rating: 5,
+      dateFinished: '',
+      favorite: true,
+    },
+    {
       title: 'A Philosophy of Software Design',
       author: 'John Ousterhout',
       link: 'https://milkov.tech/assets/psd.pdf',
