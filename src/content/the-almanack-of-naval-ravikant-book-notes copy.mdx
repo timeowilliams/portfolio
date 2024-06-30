@@ -1,0 +1,126 @@
+---
+title: 'A Philosophy of Software Design: Book Notes'
+publishedAt: '2024-06-10'
+summary: ''
+slug: 'a-philosophy-of-software-design-book-notes'
+featured: 'false'
+tag: 'book-notes'
+---
+
+Here are my notes taken while reading [A Philosophy of Software Design](https://milkov.tech/assets/psd.pdf) by John Ousterhout.
+
+
+
+A shallow module is one whose interface is complicated relative to the
+functionality it provides. Shallow modules don’t help much in the battle
+against complexity, because the benefit they provide (not having to learn about
+how they work internally) is negated by the cost of learning and using their
+interfaces. Small modules tend to be shallow.
+
+
+### On Clasitis
+Unfortunately, the value of deep classes is not widely appreciated today. The
+conventional wisdom in programming is that classes should be small, not deep.
+Students are often taught that the most important thing in class design is to break
+up larger classes into smaller ones. The same advice is often given about
+methods: “Any method longer than N lines should be divided into multiple
+methods” (N can be as low as 10). This approach results in large numbers of
+shallow classes and methods, which add to overall system complexity.
+
+^^ I personally experienced this first hand when I started learning coding. A friend of mine 
+spoke to me about making sure React files were never greater than 150 lines in length & this was the first
+of where I bought into the dogma of small classes. Would be interested to take a look at the 
+source code for Java's garbage collector & the UNIX file system, both examples from Ousterhout on deep modules. 
+
+### Information Leakage
+One of the best skills you can learn as a software designer is a high level
+of sensitivity to information leakage. If you encounter information leakage
+between classes, ask yourself “How can I reorganize these classes so that this
+particular piece of knowledge only affects a single class?” If the affected classes
+are relatively small and closely tied to the leaked information, it may make sense
+to merge them into a single class. A
+
+
+Example: 
+5.5 Example: too many classes
+The most common mistake made by students was to divide their code into a large
+number of shallow classes, which led to information leakage between the classes.
+One team used two different classes for receiving HTTP requests; the first class
+read the request from the network connection into a string, and the second class
+parsed the string. This is an example of a temporal decomposition (“first we read
+the request, then we parse it”). Information leakage occurred because an HTTP
+request can’t be read without parsing much of the message; for example, the
+Content-Length header specifies the length of the request body, so the headers
+must be parsed in order to compute the total request length. As a result, both
+classes needed to understand most of the structure of HTTP requests, and parsing
+code was duplicated in both classes. This approach also created extra complexity
+for callers, who had to invoke two methods in different classes, in a particular
+order, to receive a request.
+Because the classes shared so much information, it would have been better to
+merge them into a single class that handles both request reading and parsing.
+This provides better information hiding, since it isolates all knowledge of the
+request format in one class, and it also provides a simpler interface to callers (just
+one method to invoke).
+This example illustrates a general theme in software design: information
+hiding can often be improved by making a class slightly larger.
+
+
+When decomposing a system into modules, try not to be influenced by the
+order in which operations will occur at runtime; that will lead you down the path
+of temporal decomposition, which will result in information leakage and shallow
+modules. Instead, think about the different pieces of knowledge that are needed
+to carry out the tasks of your application, and design each module to encapsulate
+one or a few of those pieces of knowledge. This will produce a clean and simple
+design with deep modules.
+
+
+
+### Make classes somewhat general-purpose
+In my experience, the sweet spot is to implement new modules in a somewhat
+general-purpose fashion. The phrase “somewhat general-purpose” means that
+the module’s functionality should reflect your current needs, but its interface
+should not. Instead, the interface should be general enough to support multiple
+uses
+
+
+### Red Flag: Pass-Through Method
+A pass-through method is one that does nothing except pass its arguments to
+another method, usually with the same API as the pass-through method. This
+typically indicates that there is not a clean division of responsibility between
+the classes.
+
+
+## Dispatcher
+
+One example where it’s useful for a method to call another method with the
+same signature is a dispatcher. A dispatcher is a method that uses its arguments
+to select one of several other methods to invoke; then it passes most or all of its
+arguments to the chosen method.
+
+## Decorator Pattern
+
+A decorator object takes an existing object and
+extends its functionality; it provides an API similar or identical to the underlying
+object, and its methods invoke the methods of the underlying object.
+
+Another example occurs in
+windowing systems: a Window class implements a simple form of window that is
+not scrollable, and a ScrollableWindow class decorates the Window class by
+adding horizontal and vertical scrollbars.
+The motivation for decorators is to separate special-purpose extensions of a
+class from a more generic core. However, decorator classes tend to be shallow:
+they introduce a large amount of boilerplate for a small amount of new
+functionality. Decorator classes often contain many pass-through methods
+
+
+
+### Pass through variables
+
+Alternatives: 
+The solution I use most often is to introduce a context object as in Figure
+7.2(d). A context stores all of the application’s global state (anything that would
+otherwise be a pass-through variable or global variable). Most applications have
+multiple variables in their global state, representing things such as configuration
+options, shared subsystems, and performance counters. There is one context
+object per instance of the system. The context allows multiple instances of the
+system to coexist in a single process, each with its own context.
