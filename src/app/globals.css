@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-montserrat: var(--font-montserrat);
+  --font-lora: var(--font-lora);
+}
+
+body {
+  font-family: var(--font-montserrat);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-lora);
+} 

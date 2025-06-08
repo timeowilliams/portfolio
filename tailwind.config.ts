@@ -13,8 +13,17 @@ const config: Config = {
     current: 'currentColor',
     extend: {
       colors: {
-        primary: '#0E0E0E',
-        secondary: '#ECECEC',
+        primary: '#556B2F',
+        secondary: '#2F2F2F',
+        accent: '#D4AF37',
+        background: {
+          light: colors.gray[50],
+          dark: colors.gray[900],
+        },
+        text: {
+          light: colors.gray[900],
+          dark: colors.gray[100],
+        },
         secondaryDark: '#D8D8D8',
         secondaryDarker: '#6C7072',
         socialBorder: '#4B4E4F',
@@ -101,6 +110,10 @@ const config: Config = {
           'slideFromDownAndFade 0.6s ease-in-out 0.5s both',
         'slide-from-down-and-fade-6':
           'slideFromDownAndFade 0.6s ease-in-out 0.6s both',
+      },
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
+        serif: ['Lora', 'serif'],
       },
     },
   },

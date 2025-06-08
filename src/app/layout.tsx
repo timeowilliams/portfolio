@@ -1,40 +1,44 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Montserrat, Lora } from 'next/font/google';
+import './globals.css';
 
-import '../styles/globals.css';
+const montserrat = Montserrat({ 
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+});
 
-import { ContextProvider } from '@/components/context-provider';
-import MaxWidthWrapper from '@/components/max-width-wrapper';
-import { Toaster } from 'sonner';
-
-const inter = Inter({ subsets: ['latin'] });
+const lora = Lora({ 
+  subsets: ['latin'],
+  variable: '--font-lora',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.timeowilliams.com/'),
-  title: { default: 'Timeo Williams', template: '%s | Timeo Williams' },
-  description: 'Developer & YouTuber',
-  openGraph: {
-    title: 'Timeo Williams',
-    description: 'Developer & YouTuber.',
-    url: 'https://www.timeowilliams.com/',
-    siteName: 'Timeo Williams',
-    locale: 'en_US',
-    type: 'website',
+  title: 'Timeo Williams | The Living Bridge',
+  description: 'Built to carry others. Formed in fire. Led by faith.',
+  icons: {
+    icon: [
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' }
+    ],
+    apple: [
+      { url: '/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+    ],
+    shortcut: ['/favicon/favicon.ico']
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+  manifest: '/favicon/site.webmanifest',
+  metadataBase: new URL('https://timeowilliams.com'),
+  openGraph: {
+    title: 'Timeo Williams | The Living Bridge',
+    description: 'Built to carry others. Formed in fire. Led by faith.',
+    images: [{ url: '/favicon/android-chrome-512x512.png' }],
   },
   twitter: {
-    title: 'Timeo Williams',
-    card: 'summary_large_image',
+    card: 'summary',
+    title: 'Timeo Williams | The Living Bridge',
+    description: 'Built to carry others. Formed in fire. Led by faith.',
+    images: ['/favicon/android-chrome-512x512.png'],
   },
 };
 
@@ -44,42 +48,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${montserrat.variable} ${lora.variable}`}>
       <head>
-        <meta name="viewport" content="width=device-width, user-scalable=no" />
-        <link
-          rel="icon"
-          href="/icon?<generated>"
-          type="image/<generated>"
-          sizes="<generated>"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="/apple-icon?<generated>"
-          type="image/<generated>"
-          sizes="<generated>"
-        />
-        <script
-          src="https://beamanalytics.b-cdn.net/beam.min.js"
-          data-token="f0a810b3-7893-4402-bfdd-fa30fd6f48de"
-          async
-        >
-        </script>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <meta name="msapplication-TileColor" content="#556B2F" />
+        <meta name="theme-color" content="#556B2F" />
       </head>
-      <body
-        className={`bg-primary text-secondary text-sm md:text-base ${inter.className}`}
-      >
-        <ContextProvider>
-          <main className="min-h-screen flex flex-col items-center">
-            <Toaster richColors position="bottom-center" />
-            <MaxWidthWrapper>
-              <div className="flex-1 w-full flex flex-col gap-8 items-center">
-                {children}
-              </div>
-            </MaxWidthWrapper>
-          </main>
-        </ContextProvider>
-        <div className="pointer-events-none bg-primary fixed bottom-0 left-0 h-28 [mask-image:linear-gradient(transparent,#000000)] w-full"></div>
+      <body className="font-sans antialiased">
+        {children}
       </body>
     </html>
   );
