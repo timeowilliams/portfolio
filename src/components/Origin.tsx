@@ -25,7 +25,7 @@ const timeline = [
   {
     year: '2024',
     title: 'BluePath Labs',
-    description: 'Software Engineering for Robotics Research Center (USMA)',
+    description: 'Software Engineering for Robotics Research Lab',
     icon: '🤖'
   }
 ];
@@ -94,7 +94,7 @@ export function Origin() {
           className="mt-20 text-center"
         >
           <blockquote className="text-xl italic text-accent/80 font-serif">
-            "I'm building for the family I don't yet have..."
+            &ldquo;I&apos;m building for the family I don&apos;t yet have...&rdquo;
           </blockquote>
         </motion.div>
       </div>

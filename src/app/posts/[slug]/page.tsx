@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import Subscribe from '@/app/_components/subscribe';
-import { CustomMDX } from '@/components/mdx';
+// import { CustomMDX } from '@/components/mdx';
 import { getPosts } from '@/lib/posts';
 import { reformatDate } from '@/lib/utils';
 import { Redis } from '@upstash/redis';
@@ -91,7 +90,7 @@ export default async function Blog({ params }: { params: any }) {
         {post.metadata.title}
       </h1>
       <article className="prose prose-invert pb-10 animate-slide-from-down-and-fade-4 my-8">
-        <CustomMDX source={post.content} />
+        {/* <CustomMDX source={post.content} /> */}
       </article>
       <div className="flex justify-center items-center text-sm max-w-[650px] animate-slide-from-down-and-fade-3">
         <span className="text-secondaryDark">
@@ -101,7 +100,6 @@ export default async function Blog({ params }: { params: any }) {
       <div className="flex w-full items-center justify-center  my-6  animate-slide-from-down-and-fade-4">
         <span className="w-8 bg-secondaryDarker h-[1px] rounded-full"></span>
       </div>
-      <Subscribe />
     </div>
   );
 }

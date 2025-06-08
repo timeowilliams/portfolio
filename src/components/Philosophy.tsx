@@ -52,7 +52,7 @@ export function Philosophy() {
           className="text-center mb-16 max-w-3xl mx-auto"
         >
           <blockquote className="text-2xl font-serif italic text-accent">
-            "I&apos;m building for the family I don&apos;t yet have, because legacy begins before lineage."
+            &ldquo;I&apos;m building for the family I don&apos;t yet have, because legacy begins before lineage.&rdquo;
           </blockquote>
         </motion.div>
 
