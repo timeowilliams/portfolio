@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Logo } from './Logo';
+import { BridgeAnimation } from './BridgeAnimation';
 
 // Temporary placeholder image
 const placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23556B2F'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-size='24'%3ETW%3C/text%3E%3C/svg%3E";
@@ -35,16 +36,11 @@ const textAnimation = {
 export function Hero() {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-secondary">
-      {/* Animated Bridge Background */}
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={bridgeAnimation}
-        className="absolute inset-0 z-0"
-      >
+      {/* Background Pattern */}
+      <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-secondary via-primary/30 to-secondary" />
         <div className="absolute inset-0 bg-[url('/images/bridge-pattern.svg')] opacity-10" />
-      </motion.div>
+      </div>
 
       {/* Logo in top left */}
       <motion.div
@@ -81,9 +77,20 @@ export function Hero() {
           </p>
         </motion.div>
 
-        {/* Portrait */}
+        {/* Bridge Animation */}
         <motion.div
           custom={0.4}
+          initial="hidden"
+          animate="visible"
+          variants={textAnimation}
+          className="mb-12"
+        >
+          <BridgeAnimation />
+        </motion.div>
+
+        {/* Portrait */}
+        <motion.div
+          custom={0.6}
           initial="hidden"
           animate="visible"
           variants={textAnimation}

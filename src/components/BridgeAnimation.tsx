@@ -12,70 +12,117 @@ export function BridgeAnimation() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
-    canvas.width = 600;
-    canvas.height = 200;
+    // Set canvas size with higher resolution for retina displays
+    const scale = window.devicePixelRatio || 1;
+    canvas.width = 1000 * scale; // Increased width
+    canvas.height = 240 * scale; // Adjusted height
+    ctx.scale(scale, scale);
 
     // Animation variables
     let animationFrame: number;
-    let progress = 0;
-    const duration = 3000; // 3 seconds
-    let startTime: number | null = null;
+    let time = 0;
+    const bridgeColor = '#8B8682'; // Warm gray for concrete/stone
+    const bridgeShadowColor = '#6B6662'; // Darker shade for depth
 
     // Draw bridge
-    const drawBridge = (ctx: CanvasRenderingContext2D, turbulence: number) => {
+    const drawBridge = (ctx: CanvasRenderingContext2D, time: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Bridge arch
-      ctx.beginPath();
-      ctx.moveTo(50, 150);
-      
-      // Create turbulent or smooth curve based on progress
-      for (let x = 0; x <= canvas.width - 100; x++) {
-        const normalY = Math.sin((x / (canvas.width - 100)) * Math.PI) * 50;
-        const turbulentY = normalY + (Math.random() - 0.5) * turbulence * 20;
-        const y = 150 - (turbulentY * (1 - progress) + normalY * progress);
-        
-        if (x === 0) {
-          ctx.moveTo(x + 50, y);
-        } else {
-          ctx.lineTo(x + 50, y);
-        }
-      }
+      const startX = 30; // Start closer to edge
+      const endX = canvas.width / scale - 30; // End closer to edge
+      const bridgeWidth = endX - startX;
+      const maxHeight = 65; // Slightly reduced height
+      const baseY = 150; // Moved up slightly
 
-      ctx.strokeStyle = '#556B2F'; // Olive Green
-      ctx.lineWidth = 8;
+      // Faster bridge movement
+      const bridgeMovement = Math.sin(time * 1.2) * 1.5; // Increased speed, reduced amplitude
+
+      // Draw main arch with shadow
+      ctx.beginPath();
+      ctx.moveTo(startX, baseY + 2);
+      
+      // Shadow arch
+      ctx.bezierCurveTo(
+        startX + bridgeWidth * 0.25, baseY - maxHeight + bridgeMovement + 2,
+        startX + bridgeWidth * 0.75, baseY - maxHeight + bridgeMovement + 2,
+        endX, baseY + 2
+      );
+      ctx.strokeStyle = bridgeShadowColor;
+      ctx.lineWidth = 16; // Thicker shadow
+      ctx.lineCap = 'round';
       ctx.stroke();
 
-      // Draw water below
+      // Main arch
       ctx.beginPath();
-      ctx.moveTo(0, canvas.height);
-      for (let x = 0; x <= canvas.width; x += 20) {
-        const waveHeight = 20 * (1 - progress);
-        const y = canvas.height - 20 + Math.sin(x / 30 + Date.now() / 1000) * waveHeight;
+      ctx.moveTo(startX, baseY);
+      ctx.bezierCurveTo(
+        startX + bridgeWidth * 0.25, baseY - maxHeight + bridgeMovement,
+        startX + bridgeWidth * 0.75, baseY - maxHeight + bridgeMovement,
+        endX, baseY
+      );
+      ctx.strokeStyle = bridgeColor;
+      ctx.lineWidth = 14; // Thicker bridge
+      ctx.lineCap = 'round';
+      ctx.stroke();
+
+      // Support lines with shadows
+      const numSupports = 10; // More supports
+      for (let i = 1; i < numSupports; i++) {
+        const x = startX + (bridgeWidth * i) / numSupports;
+        const archY = baseY - Math.sin((i / numSupports) * Math.PI) * maxHeight + bridgeMovement;
+        
+        // Support shadow
+        ctx.beginPath();
+        ctx.moveTo(x + 1, archY + 1);
+        ctx.lineTo(x + 1, baseY + 21);
+        ctx.strokeStyle = bridgeShadowColor + '80';
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        // Support line
+        ctx.beginPath();
+        ctx.moveTo(x, archY);
+        ctx.lineTo(x, baseY + 20);
+        ctx.strokeStyle = bridgeColor + '80';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+      }
+
+      // Water effect
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height / scale);
+      
+      // Faster water movement
+      const waveAmplitude = 5; // Slightly reduced amplitude
+      const waveFrequency = 0.02;
+      
+      for (let x = 0; x <= canvas.width / scale; x += 8) { // More detailed waves
+        const y = baseY + 40 + 
+          Math.sin(x * waveFrequency + time * 1.5) * waveAmplitude + // Faster water movement
+          Math.sin(x * waveFrequency * 0.5 + time * 1.8) * waveAmplitude * 0.5;
         ctx.lineTo(x, y);
       }
-      ctx.lineTo(canvas.width, canvas.height);
-      ctx.fillStyle = `rgba(0, 100, 255, ${0.3 + (1 - progress) * 0.4})`;
+      
+      ctx.lineTo(canvas.width / scale, canvas.height / scale);
+      ctx.lineTo(0, canvas.height / scale);
+      
+      // Gradient for water
+      const gradient = ctx.createLinearGradient(0, baseY, 0, canvas.height / scale);
+      gradient.addColorStop(0, 'rgba(0, 100, 255, 0.12)');
+      gradient.addColorStop(1, 'rgba(0, 100, 255, 0.06)');
+      ctx.fillStyle = gradient;
       ctx.fill();
     };
 
-    // Animation loop
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      progress = Math.min(elapsed / duration, 1);
-
-      const turbulence = Math.max(0, 1 - progress);
-      drawBridge(ctx, turbulence);
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
+    // Continuous animation loop with faster time increment
+    const animate = () => {
+      time += 0.03; // Faster time progression
+      drawBridge(ctx, time);
+      animationFrame = requestAnimationFrame(animate);
     };
 
     // Start animation
-    animationFrame = requestAnimationFrame(animate);
+    animate();
 
     // Cleanup
     return () => {
@@ -88,8 +135,11 @@ export function BridgeAnimation() {
   return (
     <canvas
       ref={canvasRef}
-      className="w-full max-w-2xl mx-auto h-[200px]"
-      style={{ maxWidth: '600px' }}
+      className="w-full max-w-4xl mx-auto h-[160px]" // Adjusted height
+      style={{ 
+        maxWidth: '1000px', // Increased max-width
+        filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))'
+      }}
     />
   );
 } 
