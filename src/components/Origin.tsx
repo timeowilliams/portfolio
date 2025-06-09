@@ -7,25 +7,25 @@ const timeline = [
   {
     year: '2019',
     title: 'USPS → National Guard',
-    description: 'Beginning of service journey in Finance',
+    description: 'Left the USPS to serve',
     icon: '📬'
   },
   {
     year: '2021',
     title: 'Tech Transformation',
-    description: 'Building systems that matter',
+    description: 'Building SAAS products while traveling the world',
     icon: '💻'
   },
   {
     year: '2024',
-    title: 'US Army Cyber Reserves',
-    description: 'Evolution into 17C Cyber Operations',
+    title: 'US Army Reserves Cyber Protection Brigade',
+    description: 'Focused on defending the US from cyber threats',
     icon: '🛡️'
   },
   {
-    year: '2024',
+    year: '2025',
     title: 'BluePath Labs',
-    description: 'Software Engineering for Robotics Research Lab',
+    description: 'Building applications/prototypes for the Robotics Research Lab at USMA',
     icon: '🤖'
   }
 ];
